@@ -7,7 +7,6 @@ export default function App() {
   
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <StatusBar hidden={true}/>
       <Loading></Loading>
     </ScrollView>
   );
@@ -21,6 +20,6 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     width: '100%',
     height: '100%',
-    padding: 5
+    padding: 0
   },
 });
