@@ -20,20 +20,22 @@ const AddPets = () => {
 
     return (
       <ScrollView contentContainerStyle={styleAddPets.containerPets}>
+        <Text style={styleAddPets.title}>Registra Tu Mascota</Text>
+
         <View style={styleAddPets.containerHead}>
           <View style={styleAddPets.containerImg}>
-            <Image style={styleAddPets.logo} resizeMethod='auto' source={require('../img/Logo.png')} />
+            <Image style={styleAddPets.logo} resizeMethod='resize' source={require('../img/Logo.png')} />
           </View>
 
           <View style={styleAddPets.Profile}>
             <Text>Nombre</Text>
-            <TextInput placeholder='Ingrese el nombre la mascota' />
+            <TextInput style={styleAddPets.TextInput} placeholder='Ingrese el nombre la mascota' />
 
             <Text>Descripción</Text>
-            <TextInput placeholder='Describa a su mascota(opcional)' />
+            <TextInput style={styleAddPets.TextInput} placeholder='Describa a su mascota(opcional)' />
 
             <Text>Fecha de Nacimiento</Text>
-            <TextInput placeholder='Ingrese la fecha de nacimiento de la mascota' />
+            <TextInput style={styleAddPets.TextInput} placeholder='Ingrese la fecha de nacimiento de la mascota' />
           </View>
         </View>
 
@@ -58,8 +60,23 @@ const AddPets = () => {
         </View>
 
         <View style={styleAddPets.fitButton}>
-          <Button onPress={() => console.log('Se Guardó')} title='Guardar' accessibilityLabel='Hola' color='#d676c1' />
-          <Button onPress={() => console.log('Boton para ver mascotas')} color='#d676c1' disabled title='Ver Mascota' />
+          <View style={styleAddPets.btnSeparator}>
+            <Button
+              onPress={() => console.log('Se Guardó')}
+              title='Guardar'
+              accessibilityLabel='Hola'
+              color='#d676c1'
+            />
+          </View>
+
+          <View style={styleAddPets.btnSeparator}>
+            <Button
+              onPress={() => console.log('Boton para ver mascotas')}
+              color='#d676c1'
+              disabled
+              title='Ver Mascotas'
+            />
+          </View>
         </View>
       </ScrollView>
     );
@@ -74,13 +91,19 @@ const styleAddPets = StyleSheet.create({
     width: '100%',
     height: '100%',
     flexDirection: 'column',
-    rowGap: 150
+    rowGap: 150,
+  },
+  title: {
+    fontSize: 40,
+    fontWeight: 'bold',
   },
   containerHead: {
-    width:'100%',
-    height:'30%',
+    width: '100%',
+    height: '30%',
     flexDirection: 'row',
-    backgroundColor:'lime',
+    backgroundColor: '#9ee6df',
+    marginTop: -100,
+    borderWidth: 2,
   },
   containerCmBox: {
     width: 'auto',
@@ -88,36 +111,55 @@ const styleAddPets = StyleSheet.create({
     backgroundColor: '#8ca1d3',
     display: 'flex',
     flexDirection: 'row',
-    columnGap: 10
+    columnGap: 20,
+    borderWidth: 2,
   },
   comboBox: {
     height: 50,
     width: 200,
   },
-  styleInput: {
-
+  selectInput: {},
+  TextInput: {
+    borderBottomWidth: 3,
+    borderColor: '#8C41D3',
+    borderRadius: 10,
+    width: 180,
+    margin: 5,
+    marginRight: 20,
   },
   containerImg: {
-    width: 50,
-    height: 50,
+    width: '100%',
+    height: '100%',
   },
   fitButton: {
     borderRadius: 70,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width:'100%',
+
   },
   containerImg: {
     display: 'flex',
+    padding: 20,
   },
   logo: {
     width: 200,
     height: '100%',
-    backgroundColor:'red',
+    objectFit: 'contain',
   },
-  Profile:{
-    width:'30%',
+  Profile: {
+    width: '30%',
     height: '20%',
     display: 'flex',
     flexDirection: 'column',
-    rowGap: 20
+    rowGap: 20,
+    alignItems: 'center',
+    marginLeft: '10%',
+  },
+  btnSeparator:{
+    marginHorizontal: 40
   },
 });
 
