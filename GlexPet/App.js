@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import AddPets from './src/screens/AddPets.js'
+import AddPets from './src/screens/AddPets.js';
+import Loading from './src/screens/Loading.js';
 
 export default function App() {
   
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <StatusBar hidden={true}/>
-      <AddPets></AddPets>
+      <Loading></Loading>
     </ScrollView>
   );
 }
