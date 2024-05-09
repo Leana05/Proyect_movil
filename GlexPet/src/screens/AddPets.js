@@ -1,4 +1,4 @@
-import { ScrollView, View, StyleSheet, Text, Image, TextInput, Button} from "react-native";
+import { ScrollView, View, StyleSheet, Text, Image, TextInput, Button, TouchableOpacity} from "react-native";
 import SelectInput from 'react-native-picker-select';
 
 
@@ -61,21 +61,15 @@ const AddPets = () => {
 
         <View style={styleAddPets.fitButton}>
           <View style={styleAddPets.btnSeparator}>
-            <Button
-              onPress={() => console.log('Se Guardó')}
-              title='Guardar'
-              accessibilityLabel='Hola'
-              color='#d676c1'
-            />
+            <TouchableOpacity style={styleAddPets.touchable}>
+              <Text style={styleAddPets.txtButton}>Guardar</Text>
+            </TouchableOpacity>
           </View>
 
           <View style={styleAddPets.btnSeparator}>
-            <Button
-              onPress={() => console.log('Boton para ver mascotas')}
-              color='#d676c1'
-              disabled
-              title='Ver Mascotas'
-            />
+            <TouchableOpacity style={styleAddPets.touchable}>
+              <Text style={styleAddPets.txtButton}>Ver Mascotas</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -91,7 +85,7 @@ const styleAddPets = StyleSheet.create({
     width: '100%',
     height: '100%',
     flexDirection: 'column',
-    rowGap: 150,
+    rowGap: 130,
   },
   title: {
     fontSize: 40,
@@ -106,17 +100,18 @@ const styleAddPets = StyleSheet.create({
     borderWidth: 2,
   },
   containerCmBox: {
-    width: 'auto',
+    width: '100%',
     height: 'auto',
     backgroundColor: '#8ca1d3',
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     columnGap: 20,
     borderWidth: 2,
+    alignItems:'center'
   },
   comboBox: {
     height: 50,
-    width: 200,
+    width: '100%',
   },
   selectInput: {},
   TextInput: {
@@ -132,20 +127,19 @@ const styleAddPets = StyleSheet.create({
     height: '100%',
   },
   fitButton: {
-    borderRadius: 70,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width:'100%',
-
+    width: '100%',
+    height: '20%',
   },
   containerImg: {
     display: 'flex',
     padding: 20,
   },
   logo: {
-    width: 200,
+    width: 120,
     height: '100%',
     objectFit: 'contain',
   },
@@ -158,8 +152,23 @@ const styleAddPets = StyleSheet.create({
     alignItems: 'center',
     marginLeft: '10%',
   },
-  btnSeparator:{
-    marginHorizontal: 40
+  btnSeparator: {
+    marginHorizontal: 40,
+    width: '30%',
+  },
+  touchable: {
+    backgroundColor: '#d676c1',
+    width: '100%',
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  txtButton: {
+    // backgroundColor:'#d676c1',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
 
