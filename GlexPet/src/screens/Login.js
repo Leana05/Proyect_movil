@@ -12,19 +12,19 @@ const Login = () => {
       <View style={styles_login.orangeCircleBottomRight1} />
 
       <View style={styles_login.login_container}>
-        <Text style={styles_login.title}>Login</Text>
+        <Text style={styles_login.title}>Inicio de Sesión</Text>
         <View style={styles_login.login}>
-          <TextInput style={styles_login.input} placeholder='Username'></TextInput>
-          <TextInput style={styles_login.input} placeholder='Password'></TextInput>
+          <TextInput style={styles_login.input} placeholder='Usuario'></TextInput>
+          <TextInput style={styles_login.input} placeholder='Contraseña'></TextInput>
           <View>
-            <Text>Forgot Password?</Text>
+            <Text>¿Ha olvidado su contraseña?</Text>
           </View>
           <View style={styles_login.button_container}>
             <TouchableOpacity style={styles_login.loginButton}>
-              <Text style={styles_login.loginButtonText}>Login</Text>
+              <Text style={styles_login.loginButtonText}>Ingresar</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles_login.loginButton}>
-              <Text style={styles_login.loginButtonText}>sign up</Text>
+              <Text style={styles_login.loginButtonText}>Registrar</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -60,8 +60,8 @@ const styles_login = StyleSheet.create({
     color: 'white',
   },
   login: {
-    width: '70%',
-    height: '70%',
+    width: '60%',
+    height: '60%',
     marginTop: 50,
     alignContent: 'center',
   },
@@ -97,7 +97,7 @@ const styles_login = StyleSheet.create({
   loginButtonText: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 23,
+    fontSize: 20,
     textAlign: 'center',
   },
   orangeCircleTopLeft: {
