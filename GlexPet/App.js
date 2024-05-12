@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import AddPets from './src/screens/AddPets.js';
 import Loading from './src/screens/Loading.js';
@@ -21,6 +20,7 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     width: '100%',
     height: '100%',
-    paddingHorizontal: 10
+    paddingHorizontal: 12,
+    paddingVertical:20
   },
 });
