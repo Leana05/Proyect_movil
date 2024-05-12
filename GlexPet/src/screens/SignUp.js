@@ -4,6 +4,7 @@ import { StyleSheet, View, TextInput, Text, TouchableOpacity, ScrollView} from '
 const SignUp = () => {
     return (
         <ScrollView contentContainerStyle={stylesSignUp.container}>
+            
             <View style={stylesSignUp.orangeCircleTopLeft} />
             <View style={stylesSignUp.orangeCircleTopLeft1} />
             <View style={stylesSignUp.orangeCircleTopLeft2} />
