@@ -43,7 +43,6 @@ const stylesSignUp = StyleSheet.create({
         display: 'flex',
         width: '100%',
         height: '100%',
-        backgroundColor: 'red',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#FAFFD8',
