@@ -35,52 +35,79 @@ const Home = () => {
               <TouchableOpacity style={styles.buttonCar}>
                 <Image source={require('../img/CuidoGatos1.jpg')} style={styles.butcar}  />
               </TouchableOpacity>
+              <View style={styles.precioCard}>
+                <Text style={styles.titlemoney}>1000</Text>
+              </View>
             </View>
             <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCar}>
-                <Image source={require('../img/CuidoGatos2.jpg')} style={styles.butcar}  />
+              <TouchableOpacity style={styles.buttonCard}>
+                <Image source={require('../img/CuidoGatos2.jpg')} style={styles.butcar} />
               </TouchableOpacity>
+              <View style={styles.precioCard}>
+                <Text style={styles.titlemoney}>1000</Text>
+              </View>
             </View>
             <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCar}>
-                <Image source={require('../img/CuidoGatos3.png')} style={styles.butcar}  />
+              <TouchableOpacity style={styles.buttonCard}>
+                <Image source={require('../img/CuidoGatos3.png')} style={styles.butcar} />
               </TouchableOpacity>
+              <View style={styles.precioCard}>
+                <Text style={styles.titlemoney}>1000</Text>
+              </View>
             </View>
           </View>
           <Text style={styles.title}>Juguetes</Text>
           <View style={styles.containerCard}>
             <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCar}>
-                <Image source={require('../img/jugueteGato1.png')} style={styles.butcar}  />
+              <TouchableOpacity style={styles.buttonCard}>
+                <Image source={require('../img/jugueteGato1.png')} style={styles.butcar} />
               </TouchableOpacity>
+              <View style={styles.precioCard}>
+                <Text style={styles.titlemoney}>1000</Text>
+              </View>
             </View>
             <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCar}>
-                <Image source={require('../img/jugueteGato2.png')} style={styles.butcar}  />
+              <TouchableOpacity style={styles.buttonCard}>
+                <Image source={require('../img/jugueteGato2.png')} style={styles.butcar} />
               </TouchableOpacity>
+              <View style={styles.precioCard}>
+                <Text style={styles.titlemoney}>1000</Text>
+              </View>
             </View>
             <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCar}>
-                <Image source={require('../img/jugueteGato3.png')} style={styles.butcar}  />
+              <TouchableOpacity style={styles.buttonCard}>
+                <Image source={require('../img/jugueteGato3.png')} style={styles.butcar} />
               </TouchableOpacity>
+              <View style={styles.precioCard}>
+                <Text style={styles.titlemoney}>1000</Text>
+              </View>
             </View>
           </View>
           <Text style={styles.title}>Accesorios</Text>
           <View style={styles.containerCard}>
             <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCar}>
-                <Image source={require('../img/accesorio1.png')} style={styles.butcar}  />
+              <TouchableOpacity style={styles.buttonCard}>
+                <Image source={require('../img/accesorio1.png')} style={styles.butcar} />
               </TouchableOpacity>
+              <View style={styles.precioCard}>
+                <Text style={styles.titlemoney}>1000</Text>
+              </View>
             </View>
             <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCar}>
-                <Image source={require('../img/accesorio2.png')} style={styles.butcar}  />
+              <TouchableOpacity style={styles.buttonCard}>
+                <Image source={require('../img/accesorio2.png')} style={styles.butcar} />
               </TouchableOpacity>
+              <View style={styles.precioCard}>
+                <Text style={styles.titlemoney}>1000</Text>
+              </View>
             </View>
             <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCar}>
-                <Image source={require('../img/accesorio3.png')} style={styles.butcar}  />
+              <TouchableOpacity style={styles.buttonCard}>
+                <Image source={require('../img/accesorio3.png')} style={styles.butcar} />
               </TouchableOpacity>
+              <View style={styles.precioCard}>
+                <Text style={styles.titlemoney}>1000</Text>
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -100,7 +127,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontSize: 40,
+    fontSize: 30,
   },
   container_search: {
     width: '80%',
@@ -157,7 +184,6 @@ const styles = StyleSheet.create({
   },
   store: {
     width: '100%',
-    padding: 5,
   },
   containerCard: {
     with: '100%',
@@ -165,27 +191,40 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
     borderWidth: 2,
     padding: 10,
   },
   card: {
     width: 120,
     height: '100%',
-    borderWidth: 2,
-    padding:2,
-    justifyContent: 'center',
-    alignItems: 'center',
+    borderWidth: 3,
+    borderRadius: 15,
   },
   butcar: {
     width: '100%',
     height: '100%',
   },
-  buttonCar: {
+  buttonCard: {
     height: '100%',
     width: '100%',
     alignItems: 'center',
     alignContent: 'center',
+    padding: 5,
   },
-
+  precioCard: {
+    position: 'absolute',
+    bottom: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: 40,
+    backgroundColor: 'rgba(2, 30, 10, 0.5)',
+    marginBottom:5,
+  },
+  titlemoney: {
+    fontSize: 30,
+    margin:1,
+    color: 'white',
+    fontWeight: 'bold',
+  },
 });
