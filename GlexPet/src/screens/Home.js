@@ -8,7 +8,7 @@ const Home = () => {
     <View style={styles.container}>
       <View style={styles.container_search}>
         <Image
-          source={require('../img/huesito.png')} // Cambia la ruta de la imagen según tu ubicación
+          source={require('../img/huesito1.png')}
           style={styles.hueso}
         />
         <View style={styles.searchContainer}>
@@ -138,8 +138,9 @@ const styles = StyleSheet.create({
   hueso: {
     flex: 1,
     position: 'absolute',
-    width: 400,
+    width: 410,
     height: '80%',
+    
   },
   searchContainer: {
     flexDirection: 'row',
