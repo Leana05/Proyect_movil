@@ -8,7 +8,7 @@ const User = () => {
             <View style={stylesUser.decorative2}></View>
 
             <View style={stylesUser.data_container}>
-                
+                <View><Text>Foto</Text></View>
             </View>
         </ScrollView>
     )
