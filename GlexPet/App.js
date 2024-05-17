@@ -1,15 +1,36 @@
-import { StyleSheet, View } from 'react-native';
-import Home from './src/screens/Home.js';
-import Login from './src/screens/Login.js';
-import Program from './src/screens/Program.js';
-
+import * as React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Dashboard from './src/components/Dashboard';
+import Home from './src/components/Home';
+import Program from './src/screens/Program'
 export default function App() {
+
+  // Definimos la variable Stack que no permitirá usar los atribustos de nuestra barra de navegación
+  const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
+
   return (
-    <View style={styles.container}>
-      {/* {/* <Login></Login> */}
-      {/* <Home></Home> */}
-      <Program></Program>
-    </View>
+    // // Este es otro método de Navegación
+    // <NavigationContainer style={styles.container}>
+    //   <Stack.Navigator>
+    //     <Stack.Screen name='Home' component={Home} />
+    //     <Stack.Screen name='Dashboard' component={Dashboard} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
+
+    // Esta es la TabBar o la barra de Navegación
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name='Home' component={Home} />
+        <Tab.Screen name='User' component={'User'} />
+        <Tab.Screen name='AddPets' component={'AddPets'} />
+        <Tab.Screen name='Program' component={Program} />
+        <Tab.Screen name='Cart' component={'Cart'} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
