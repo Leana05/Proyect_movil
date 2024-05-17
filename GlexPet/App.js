@@ -1,14 +1,12 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import AddPets from './src/screens/AddPets.js';
-import Loading from './src/screens/Loading.js';
-import Cart from './src/screens/Cart.js'
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Cart></Cart>
-    </ScrollView>
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
