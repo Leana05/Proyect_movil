@@ -7,10 +7,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <View style={styles.container_search}>
-        <Image
-          source={require('../img/huesito1.png')}
-          style={styles.hueso}
-        />
+        <Image source={require('../img/huesito1.png')} style={styles.hueso} />
         <View style={styles.searchContainer}>
           <TextInput style={styles.input} placeholder='Buscar...' />
           <TouchableOpacity onPress={() => console.log('Search pressed')}>
@@ -30,85 +27,107 @@ const Home = () => {
         </View>
         <ScrollView contentContainerStyle={styles.store}>
           <Text style={styles.title}>Comida</Text>
-          <View style={styles.containerCard}>
-            <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCar}>
-                <Image source={require('../img/CuidoGatos1.jpg')} style={styles.butcar}  />
-              </TouchableOpacity>
-              <View style={styles.precioCard}>
-                <Text style={styles.titlemoney}>1000</Text>
+          <View style={styles.containerScroll}>
+            <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCar}>
+                  <Image source={require('../img/CuidoGatos1.jpg')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCard}>
-                <Image source={require('../img/CuidoGatos2.jpg')} style={styles.butcar} />
-              </TouchableOpacity>
-              <View style={styles.precioCard}>
-                <Text style={styles.titlemoney}>1000</Text>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/CuidoGatos2.jpg')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCard}>
-                <Image source={require('../img/CuidoGatos3.png')} style={styles.butcar} />
-              </TouchableOpacity>
-              <View style={styles.precioCard}>
-                <Text style={styles.titlemoney}>1000</Text>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/CuidoGatos3.png')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
               </View>
-            </View>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/CuidoGatos3.png')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
+              </View>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/CuidoGatos3.png')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
+              </View>
+            </ScrollView>
           </View>
           <Text style={styles.title}>Juguetes</Text>
-          <View style={styles.containerCard}>
-            <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCard}>
-                <Image source={require('../img/jugueteGato1.png')} style={styles.butcar} />
-              </TouchableOpacity>
-              <View style={styles.precioCard}>
-                <Text style={styles.titlemoney}>1000</Text>
+          <View style={styles.containerScroll}>
+            <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/jugueteGato1.png')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCard}>
-                <Image source={require('../img/jugueteGato2.png')} style={styles.butcar} />
-              </TouchableOpacity>
-              <View style={styles.precioCard}>
-                <Text style={styles.titlemoney}>1000</Text>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/jugueteGato2.png')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCard}>
-                <Image source={require('../img/jugueteGato3.png')} style={styles.butcar} />
-              </TouchableOpacity>
-              <View style={styles.precioCard}>
-                <Text style={styles.titlemoney}>1000</Text>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/jugueteGato3.png')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
               </View>
-            </View>
+            </ScrollView>
           </View>
           <Text style={styles.title}>Accesorios</Text>
-          <View style={styles.containerCard}>
-            <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCard}>
-                <Image source={require('../img/accesorio1.png')} style={styles.butcar} />
-              </TouchableOpacity>
-              <View style={styles.precioCard}>
-                <Text style={styles.titlemoney}>1000</Text>
+          <View style={styles.containerScroll}>
+            <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/accesorio1.png')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCard}>
-                <Image source={require('../img/accesorio2.png')} style={styles.butcar} />
-              </TouchableOpacity>
-              <View style={styles.precioCard}>
-                <Text style={styles.titlemoney}>1000</Text>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/accesorio2.png')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.card}>
-              <TouchableOpacity style={styles.buttonCard}>
-                <Image source={require('../img/accesorio3.png')} style={styles.butcar} />
-              </TouchableOpacity>
-              <View style={styles.precioCard}>
-                <Text style={styles.titlemoney}>1000</Text>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}>
+                  <Image source={require('../img/accesorio3.png')} style={styles.butcar} />
+                </TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}>1000</Text>
+                </View>
               </View>
-            </View>
+            </ScrollView>
           </View>
         </ScrollView>
       </View>
@@ -140,7 +159,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 410,
     height: '80%',
-    
   },
   searchContainer: {
     flexDirection: 'row',
@@ -186,18 +204,23 @@ const styles = StyleSheet.create({
   store: {
     width: '100%',
   },
-  containerCard: {
+  containerScroll: {
     with: '100%',
     height: 250,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     borderWidth: 2,
     padding: 10,
   },
-  card: {
-    width: 120,
+
+  containerCard: {
     height: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  card: {
+    width: 130,
+    height: '100%',
+    marginHorizontal:6,
     borderWidth: 3,
     borderRadius: 15,
   },
@@ -220,11 +243,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 40,
     backgroundColor: 'rgba(2, 30, 10, 0.5)',
-    marginBottom:5,
+    marginBottom: 5,
   },
   titlemoney: {
     fontSize: 30,
-    margin:1,
+    margin: 1,
     color: 'white',
     fontWeight: 'bold',
   },
