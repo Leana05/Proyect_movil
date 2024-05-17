@@ -7,8 +7,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* {/* <Login></Login> */}
-      <Home></Home>
-      {/* <Program></Program> */}
+      {/* <Home></Home> */}
+      <Program></Program>
     </View>
   );
 }
