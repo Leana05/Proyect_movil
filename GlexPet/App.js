@@ -24,7 +24,7 @@ export default function App() {
     //   </Stack.Navigator>
     // </NavigationContainer>
 
-    // Esta es la TabBar o la barra de Navegación
+    // Esta es la TabBar o la barra de Navegación, falta corregir algo
     <NavigationContainer screenOptions={{ headerShown: false }}>
       <Tab.Navigator sceneContainerStyle={styles.tabBar} screenOptions={{ tabBarStyle: { position: 'absolute' } }}>
         <Tab.Screen name='AddPets' component={AddPets} />
