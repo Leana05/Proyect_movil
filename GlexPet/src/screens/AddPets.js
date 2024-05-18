@@ -1,176 +1,173 @@
-import { ScrollView, View, StyleSheet, Text, Image, TextInput, Button, TouchableOpacity} from "react-native";
+import React from 'react';
+import { ScrollView, View, StyleSheet, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import SelectInput from 'react-native-picker-select';
 
-
 const AddPets = () => {
+  const Especie = [
+    { label: 'Canino', value: '0' },
+    { label: 'Felino', value: '1' },
+    { label: 'Ave', value: '2' },
+    { label: 'Reptil', value: '3' },
+  ];
 
-    const Especie = [
-        { label: 'Canino', value: '0' },
-        { label: 'Felino', value: '1' },
-        { label: 'Ave', value: '2' },
-        { label: 'Reptil', value: '3' },
-    ];
+  const Genero = [
+    { label: 'Hembra', value: '0' },
+    { label: 'Macho', value: '1' },
+  ];
 
-    const Genero = [
-        { label: 'Ciencia', value: 'ciencia' },
-        { label: 'Cómic', value: 'comic' },
-        { label: 'Educación', value: 'educacion' },
-        { label: 'Historia', value: 'historicos' },
-    ];
-
-    return (
-      <ScrollView contentContainerStyle={styleAddPets.containerPets}>
-        <Text style={styleAddPets.title}>Registra Tu Mascota</Text>
-
-        <View style={styleAddPets.containerHead}>
-          <View style={styleAddPets.containerImg}>
-            <Image style={styleAddPets.logo} resizeMethod='resize' source={require('../img/Logo.png')} />
-          </View>
-
-          <View style={styleAddPets.Profile}>
-            <Text>Nombre</Text>
-            <TextInput style={styleAddPets.TextInput} placeholder='Ingrese el nombre la mascota' />
-
-            <Text>Descripción</Text>
-            <TextInput style={styleAddPets.TextInput} placeholder='Describa a su mascota(opcional)' />
-
-            <Text>Fecha de Nacimiento</Text>
-            <TextInput style={styleAddPets.TextInput} placeholder='Ingrese la fecha de nacimiento de la mascota' />
-          </View>
+  return (
+    <ScrollView contentContainerStyle={styleAddPets.containerPets}>
+      <View style={styleAddPets.containerHead}>
+        <View style={styleAddPets.containerImg}>
+          <Image style={styleAddPets.logo} resizeMethod='resize' source={require('../img/Logo.png')} />
         </View>
 
-        <View style={styleAddPets.containerCmBox}>
-          <View style={styleAddPets.comboBox}>
-            <SelectInput
-              style={styleAddPets.selectInput}
-              onValueChange={(value) => console.log(value)}
-              placeholder={{ label: 'Selecciona una especie', value: null }}
-              items={Especie}
-            />
-          </View>
+        <View style={styleAddPets.Profile}>
+          <Text>Nombre</Text>
+          <TextInput style={styleAddPets.TextInput} placeholder='Ingrese el nombre de la mascota' />
 
-          <View style={styleAddPets.comboBox}>
-            <SelectInput
-              style={styleAddPets.selectInput}
-              onValueChange={(value) => console.log(value)}
-              placeholder={{ label: 'Selecciona un genero', value: null }}
-              items={Genero}
-            />
-          </View>
+          <Text>Descripción</Text>
+          <TextInput style={styleAddPets.TextInput} placeholder='Describa a su mascota (opcional)' />
+
+          <Text>Fecha de Nacimiento</Text>
+          <TextInput style={styleAddPets.TextInput} placeholder='Ingrese la fecha de nacimiento de la mascota' />
+        </View>
+      </View>
+
+      <View style={styleAddPets.containerCmBox}>
+        <View style={styleAddPets.comboBox}>
+          <SelectInput
+            onValueChange={(value) => console.log(value)}
+            placeholder={{ label: 'Selecciona una especie', value: null }}
+            items={Especie}
+            style={pickerSelectStyles}
+          />
         </View>
 
-        <View style={styleAddPets.fitButton}>
-          <View style={styleAddPets.btnSeparator}>
-            <TouchableOpacity style={styleAddPets.touchable}>
-              <Text style={styleAddPets.txtButton}>Guardar</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styleAddPets.btnSeparator}>
-            <TouchableOpacity style={styleAddPets.touchable}>
-              <Text style={styleAddPets.txtButton}>Ver Mascotas</Text>
-            </TouchableOpacity>
-          </View>
+        <View style={styleAddPets.comboBox}>
+          <SelectInput
+            onValueChange={(value) => console.log(value)}
+            placeholder={{ label: 'Selecciona un género', value: null }}
+            items={Genero}
+            style={pickerSelectStyles}
+          />
         </View>
-      </ScrollView>
-    );
-}
+      </View>
+
+      <View style={styleAddPets.fitButton}>
+        <View style={styleAddPets.btnSeparator}>
+          <TouchableOpacity style={styleAddPets.touchable}>
+            <Text style={styleAddPets.txtButton}>Guardar</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styleAddPets.btnSeparator}>
+          <TouchableOpacity style={styleAddPets.touchable}>
+            <Text style={styleAddPets.txtButton}>Ver Mascotas</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
+  );
+};
 
 const styleAddPets = StyleSheet.create({
   containerPets: {
-    display: 'flex',
+    flex: 1,
     backgroundColor: '#faffd8',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-    height: '100%',
-    flexDirection: 'column',
-    rowGap: 130,
-  },
-  title: {
-    fontSize: 40,
-    fontWeight: 'bold',
+    paddingHorizontal:20
   },
   containerHead: {
     width: '100%',
-    height: '30%',
     flexDirection: 'row',
     backgroundColor: '#9ee6df',
-    marginTop: -100,
     borderWidth: 2,
+    padding: 10,
+    marginBottom: 20,
   },
   containerCmBox: {
     width: '100%',
-    height: 'auto',
     backgroundColor: '#8ca1d3',
-    display: 'flex',
-    flexDirection: 'column',
-    columnGap: 20,
+    padding: 10,
     borderWidth: 2,
-    alignItems:'center'
+    alignItems: 'center',
+    marginBottom: 20,
   },
   comboBox: {
-    height: 50,
     width: '100%',
+    marginVertical: 10,
   },
-  selectInput: {},
   TextInput: {
     borderBottomWidth: 3,
     borderColor: '#8C41D3',
     borderRadius: 10,
-    width: 180,
-    margin: 5,
-    marginRight: 20,
+    width: '100%',
+    marginVertical: 5,
+    padding: 10,
   },
   containerImg: {
-    width: '100%',
-    height: '100%',
-  },
-  fitButton: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-    height: '20%',
-  },
-  containerImg: {
-    display: 'flex',
+    width: '40%',
     padding: 20,
   },
   logo: {
-    width: 120,
-    height: '100%',
-    objectFit: 'contain',
+    width: '100%',
+    height: 100,
+    resizeMode: 'contain',
   },
   Profile: {
-    width: '30%',
-    height: '20%',
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: 20,
-    alignItems: 'center',
-    marginLeft: '10%',
+    width: '60%',
+    padding: 10,
+    justifyContent: 'center',
+  },
+  fitButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
   btnSeparator: {
-    marginHorizontal: 40,
-    width: '30%',
+    width: '45%',
   },
   touchable: {
     backgroundColor: '#d676c1',
-    width: '100%',
-    height: 100,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    borderWidth: 1,
+    padding: 15,
   },
   txtButton: {
-    // backgroundColor:'#d676c1',
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#fff',
   },
 });
 
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: '#8C41D3',
+    borderRadius: 4,
+    color: 'black',
+    paddingRight: 30,
+    marginVertical: 10,
+    backgroundColor: '#fff',
+  },
+  inputAndroid: {
+    fontSize: 16,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: '#8C41D3',
+    borderRadius: 4,
+    color: 'black',
+    paddingRight: 30,
+    marginVertical: 10,
+    backgroundColor: '#fff',
+  },
+});
 
-export default AddPets
+export default AddPets;

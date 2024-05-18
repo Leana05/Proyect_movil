@@ -9,6 +9,7 @@ import AddPets from './src/screens/AddPets';
 import Cart from './src/screens/Cart';
 import User from './src/screens/User';
 import Program from './src/screens/Program';
+import Loading from './src/screens/Loading';
 
 export default function App() {
 
@@ -26,8 +27,8 @@ export default function App() {
     // </NavigationContainer>
 
     // Esta es la TabBar o la barra de Navegación
-    <NavigationContainer styles={styles.container}>
-      <Tab.Navigator>
+    <NavigationContainer screenOptions={{ headerShown: false}}>
+      <Tab.Navigator sceneContainerStyle={styles.tabBar} screenOptions={{ tabBarStyle: { position: 'absolute' } }}>
         <Tab.Screen name='AddPets' component={AddPets} />
         <Tab.Screen name='Home' component={'Home'} />
         <Tab.Screen name='User' component={'User'} />
@@ -49,4 +50,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 20,
   },
+  tabBar:{
+    width:'100%',
+    height:'100%'
+  }
 });

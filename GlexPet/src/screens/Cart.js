@@ -1,196 +1,101 @@
-import { ScrollView, StyleSheet, View, Image, Text, TextInput, VirtualizedList, SafeAreaView } from "react-native"
+import React from 'react';
+import { ScrollView, StyleSheet, View, Image, Text, TextInput, FlatList, SafeAreaView } from 'react-native';
 
+const products = [
+  { id: '1', name: 'PRODUCTO 1', quantity: '1', price: '$1000' },
+  { id: '2', name: 'PRODUCTO 2', quantity: '2', price: '$2000' },
+  { id: '3', name: 'PRODUCTO 3', quantity: '3', price: '$3000' },
+  { id: '4', name: 'PRODUCTO 4', quantity: '4', price: '$4000' },
+];
 
-const Cart = () =>{
-    return (
-        <View style={styleCart.containerAll}>
-            <View style={styleCart.containerScrollView}>
-                <ScrollView contentContainerStyle={styleCart.containerScroll} >
-                    <View style={styleCart.cardProduct}>
-                        <View style={styleCart.containerImg}>
-                            <Image
-                            style={styleCart.img}
-                            height={200}
-                            width={200}
-                            resizeMode='contain'
-                            borderRadius={10}
-                            backgroundColor={'#9ee6df'}
-                            source={require('../img/Logo.png')}
-                            />
-                        </View>
-
-                        <View style={styleCart.containerInfo}>
-                            <Text style={styleCart.text}>PRODUCTO</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                            <Text style={styleCart.text}>CANTIDAD</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                            <Text style={styleCart.text}>PRECIO</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                        </View>
-                    </View>
-
-                    <View style={styleCart.cardProduct}>
-                        <View style={styleCart.containerImg}>
-                            <Image
-                            style={styleCart.img}
-                            height={200}
-                            width={200}
-                            resizeMode='contain'
-                            borderRadius={10}
-                            backgroundColor={'#9ee6df'}
-                            source={require('../img/Logo.png')}
-                            />
-                        </View>
-
-                        <View style={styleCart.containerInfo}>
-                            <Text style={styleCart.text}>PRODUCTO</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                            <Text style={styleCart.text}>CANTIDAD</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                            <Text style={styleCart.text}>PRECIO</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                        </View>
-                    </View>
-
-                    <View style={styleCart.cardProduct}>
-                        <View style={styleCart.containerImg}>
-                            <Image
-                            style={styleCart.img}
-                            height={200}
-                            width={200}
-                            resizeMode='contain'
-                            borderRadius={10}
-                            backgroundColor={'#9ee6df'}
-                            source={require('../img/Logo.png')}
-                            />
-                        </View>
-
-                        <View style={styleCart.containerInfo}>
-                            <Text style={styleCart.text}>PRODUCTO</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                            <Text style={styleCart.text}>CANTIDAD</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                            <Text style={styleCart.text}>PRECIO</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                        </View>
-                    </View>
-
-                    <View style={styleCart.cardProduct}>
-                        <View style={styleCart.containerImg}>
-                            <Image
-                            style={styleCart.img}
-                            height={200}
-                            width={200}
-                            resizeMode='contain'
-                            borderRadius={10}
-                            backgroundColor={'#9ee6df'}
-                            source={require('../img/Logo.png')}
-                            />
-                        </View>
-
-                        <View style={styleCart.containerInfo}>
-                            <Text style={styleCart.text}>PRODUCTO</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                            <Text style={styleCart.text}>CANTIDAD</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                            <Text style={styleCart.text}>PRECIO</Text>
-                            <TextInput editable={false} style={styleCart.textInput}></TextInput>
-                        </View>
-                    </View>
-                </ScrollView>
+const Cart = () => {
+  return (
+    <SafeAreaView style={styleCart.containerAll}>
+      <FlatList
+        data={products}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styleCart.containerScroll}
+        renderItem={({ item }) => (
+          <View style={styleCart.cardProduct}>
+            <View style={styleCart.containerImg}>
+              <Image style={styleCart.img} source={require('../img/Logo.png')} resizeMode='contain' />
             </View>
-
-            <View style={styleCart.containerTotal}> 
-                <Text style={styleCart.total}>
-                Valor total a pagar:<TextInput>$10000</TextInput>
-                </Text>
+            <View style={styleCart.containerInfo}>
+              <Text style={styleCart.text}>{item.name}</Text>
+              <Text style={styleCart.text}>CANTIDAD</Text>
+              <TextInput editable={false} style={styleCart.textInput} value={item.quantity} />
+              <Text style={styleCart.text}>PRECIO</Text>
+              <TextInput editable={false} style={styleCart.textInput} value={item.price} />
             </View>
-        </View>
-    );
-}
+          </View>
+        )}
+      />
+      <View style={styleCart.containerTotal}>
+        <Text style={styleCart.total}>
+          Valor total a pagar: <TextInput editable={false} value='$10000' style={styleCart.textInput} />
+        </Text>
+      </View>
+    </SafeAreaView>
+  );
+};
 
 const styleCart = StyleSheet.create({
-    containerAll:{
-        display:'flex',
-        flexDirection:'column',
-        width:'100%',
-        height:'100%',
-
-    },
-    containerScrollView:{
-        height:'90%', 
-        alignItems:'center', 
-        paddingVertical:'10%'
-    },
-    containerScroll:{
-        width:'100%',
-        display:'flex',
-        flexDirection:'column',
-        justifyContent:'center',
-        alignItems:'center',
-        alignContent:'center',
-        rowGap: 5,
-    },
-    cardProduct:{
-        backgroundColor:'#8ca1d3',
-        width:'100%',
-        height:'30%',
-        borderWidth: 2,
-        borderRadius:20,
-        borderColor:'#d676c1',
-        display:'flex',
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'center',
-        Gap:10,
-    },
-    containerImg:{
-        display:'flex',
-        flexDirection:'column',
-        borderWidth:0,
-        height:'95%',
-        width:'45%',
-        alignItems:'center',
-        justifyContent:'center'
-    },
-    img:{
-        objectFit:'contain',
-        width:'100%',
-        height:'100%',
-    },
-    containerInfo:{
-        borderWidth:0,
-        display:'flex',
-        flexDirection:'column',
-        width:'50%',
-        height:'100%',
-        justifyContent:'center',
-        rowGap:10,
-        paddingHorizontal:10
-    },
-    text:{
-        fontWeight:"bold",
-        paddingLeft:'30%'
-    },
-    textInput:{
-        readOnly:true,
-        backgroundColor:'#9ee6df',
-        borderRadius:4,
-        fontSize:20,
-
-    },
-    total:{
-        fontSize:20,
-        fontWeight:"bold",
-        textTransform:'capitalize',
-    },
-    containerTotal:{
-        borderWidth:2,
-        width:'100%',
-        height:'10%',
-        alignItems:'center',
-        justifyContent:'center',
-    }
-})
+  containerAll: {
+    flex: 1,
+    backgroundColor: '#faffd8',
+  },
+  containerScroll: {
+    alignItems: 'center',
+    paddingVertical: '2%',
+  },
+  cardProduct: {
+    backgroundColor: '#8ca1d3',
+    width: '90%',
+    marginVertical: 10,
+    borderWidth: 2,
+    borderRadius: 20,
+    borderColor: '#d676c1',
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+  },
+  containerImg: {
+    width: '40%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  img: {
+    width: '100%',
+    height: 100,
+    borderRadius: 10,
+  },
+  containerInfo: {
+    width: '60%',
+    paddingLeft: 10,
+  },
+  text: {
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  textInput: {
+    backgroundColor: '#9ee6df',
+    borderRadius: 4,
+    fontSize: 16,
+    padding: 5,
+    marginBottom: 10,
+  },
+  total: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  containerTotal: {
+    borderWidth: 2,
+    borderColor: '#d676c1',
+    width: '100%',
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default Cart;
