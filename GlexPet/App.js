@@ -1,22 +1,17 @@
-import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Dashboard from './src/components/Dashboard';
-import Home from './src/screens/Home';
-import Program from './src/screens/Program'
-import Login from './src/screens/Login';
-import User from './src/screens/User'
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
 import AddPets from './src/screens/AddPets';
 import Cart from './src/screens/Cart';
-import User from './src/screens/User';
+import Home from './src/screens/Home';
 import Program from './src/screens/Program';
-import Loading from './src/screens/Loading';
+import User from './src/screens/User.js';
 
 export default function App() {
 
-    // Definimos la variable Stack que no permitirá usar los atribustos de nuestra barra de navegación
+  // Definimos la variable Stack que no permitirá usar los atribustos de nuestra barra de navegación
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
 
@@ -29,12 +24,12 @@ export default function App() {
     //   </Stack.Navigator>
     // </NavigationContainer>
 
-    // Esta es la TabBar o la barra de Navegación
-    <NavigationContainer screenOptions={{ headerShown: false}}>
+    // Esta es la TabBar o la barra de Navegación, falta corregir algo
+    <NavigationContainer screenOptions={{ headerShown: false }}>
       <Tab.Navigator sceneContainerStyle={styles.tabBar} screenOptions={{ tabBarStyle: { position: 'absolute' } }}>
         <Tab.Screen name='AddPets' component={AddPets} />
         <Tab.Screen name='Home' component={Home} />
-        <Tab.Screen name='User' component={'User'} />
+        <Tab.Screen name='User' component={User} />
         <Tab.Screen name='Program' component={Program} />
         <Tab.Screen name='Cart' component={Cart} />
       </Tab.Navigator>
@@ -53,8 +48,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 20,
   },
-  tabBar:{
-    width:'100%',
-    height:'100%'
+  tabBar: {
+    width: '100%',
+    height: '100%'
   }
 });
