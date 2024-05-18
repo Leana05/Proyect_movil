@@ -30,43 +30,33 @@ const Home = () => {
           <View style={styles.containerScroll}>
             <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCar}>
-                  <Image source={require('../img/CuidoGatos1.jpg')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCar}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/CuidoGatos2.jpg')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/CuidoGatos3.png')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/CuidoGatos3.png')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/CuidoGatos3.png')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
             </ScrollView>
@@ -75,27 +65,21 @@ const Home = () => {
           <View style={styles.containerScroll}>
             <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/jugueteGato1.png')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/jugueteGato2.png')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/jugueteGato3.png')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
             </ScrollView>
@@ -104,27 +88,33 @@ const Home = () => {
           <View style={styles.containerScroll}>
             <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/accesorio1.png')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/accesorio2.png')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
               <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}>
-                  <Image source={require('../img/accesorio3.png')} style={styles.butcar} />
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
                 <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}>1000</Text>
+                  <Text style={styles.titlemoney}></Text>
+                </View>
+              </View>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}></Text>
+                </View>
+              </View>
+              <View style={styles.card}>
+                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
+                <View style={styles.precioCard}>
+                  <Text style={styles.titlemoney}></Text>
                 </View>
               </View>
             </ScrollView>

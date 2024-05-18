@@ -4,8 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Dashboard from './src/components/Dashboard';
-import Home from './src/components/Home';
+import Home from './src/screens/Home';
 import Program from './src/screens/Program'
+import Login from './src/screens/Login';
+import User from './src/screens/User'
 export default function App() {
 
   // Definimos la variable Stack que no permitirá usar los atribustos de nuestra barra de navegación
@@ -25,9 +27,8 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name='Home' component={Home} />
-        <Tab.Screen name='User' component={'User'} />
-        <Tab.Screen name='AddPets' component={'AddPets'} />
         <Tab.Screen name='Program' component={Program} />
+        <Tab.Screen name='User' component={'User'} />
         <Tab.Screen name='Cart' component={'Cart'} />
       </Tab.Navigator>
     </NavigationContainer>
