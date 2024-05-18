@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import SignUp from './src/screens/SignUp.js'
+import User from './src/screens/User.js'
+import Products from './src/screens/Products.js'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
