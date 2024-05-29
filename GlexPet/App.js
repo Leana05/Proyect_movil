@@ -7,7 +7,10 @@ import AddPets from './src/screens/AddPets';
 import Cart from './src/screens/Cart';
 import Home from './src/screens/Home';
 import Program from './src/screens/Program';
-import User from './src/screens/User.js';
+import User from './src/screens/User';
+import Login from './src/screens/Login';
+import SignUp from './src/screens/SignUp';
+
 
 export default function App() {
 
@@ -26,7 +29,12 @@ export default function App() {
 
     // Esta es la TabBar o la barra de Navegación, falta corregir algo
     <NavigationContainer screenOptions={{ headerShown: false }}>
-      <Tab.Navigator sceneContainerStyle={styles.tabBar} screenOptions={{ tabBarStyle: { position: 'absolute' } }}>
+      <Tab.Navigator
+        sceneContainerStyle={styles.tabBar}
+        screenOptions={{ tabBarStyle: { position: 'absolute' }, headerShown: false }}
+      >
+        <Tab.Screen name='Login' component={Login} />
+        <Tab.Screen name='SignUp' component={SignUp} />
         <Tab.Screen name='AddPets' component={AddPets} />
         <Tab.Screen name='Home' component={Home} />
         <Tab.Screen name='User' component={User} />

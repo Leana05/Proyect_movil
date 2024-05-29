@@ -1,13 +1,32 @@
+
 import { FontAwesome } from '@expo/vector-icons'; // Importa el icono de FontAwesome
 import React from 'react';
 import { Image, ScrollView, StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
 
 // para los iconos se instalo npm install @expo/vector-icons
 const Home = () => {
+  const comidaData = [
+    // { id: 1, price: '$10', image: require('../img/perrito.png') }, 
+    // { id: 2, price: '$20', image: require('../img/comida2.png') },
+    // Añadir más datos según sea necesario
+  ];
+
+  const juguetesData = [
+    // { id: 1, price: '$5', image: require('../img/juguete1.png') },
+    // { id: 2, price: '$15', image: require('../img/juguete2.png') },
+    // Añadir más datos según sea necesario
+  ];
+
+  const accesoriosData = [
+    // { id: 1, price: '$8', image: require('../img/accesorio1.png') },
+    // { id: 2, price: '$18', image: require('../img/accesorio2.png') },
+    // Añadir más datos según sea necesario
+  ];
+
   return (
     <View style={styles.container}>
       <View style={styles.container_search}>
-        <Image source={require('../img/huesito1.png')} style={styles.hueso} />
+        <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode="stretch" />
         <View style={styles.searchContainer}>
           <TextInput style={styles.input} placeholder='Buscar...' />
           <TouchableOpacity onPress={() => console.log('Search pressed')}>
@@ -15,163 +34,94 @@ const Home = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.container_store}>
-        <View style={styles.selec_Masco}>
-          <TouchableOpacity style={styles.imageButton}>
-            <Image source={require('../img/perrito.png')} style={styles.butImDog} />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.imageButton}>
-            <Image source={require('../img/Gato.png')} style={styles.butImCat} />
-          </TouchableOpacity>
+      <ScrollView style={styles.container_store}>
+        {/* <View style={styles.selec_Masco}>
+          <TouchableOpacity style={styles.imageButton}></TouchableOpacity>
+          <TouchableOpacity style={styles.imageButton}></TouchableOpacity>
+        </View> */}
+        <Text style={styles.title}>Comida</Text>
+        <View style={styles.containerScroll}>
+          <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
+            {comidaData.map((item) => (
+              <Card key={item.id} price={item.price} image={item.image} />
+            ))}
+          </ScrollView>
         </View>
-        <ScrollView contentContainerStyle={styles.store}>
-          <Text style={styles.title}>Comida</Text>
-          <View style={styles.containerScroll}>
-            <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCar}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-            </ScrollView>
-          </View>
-          <Text style={styles.title}>Juguetes</Text>
-          <View style={styles.containerScroll}>
-            <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-            </ScrollView>
-          </View>
-          <Text style={styles.title}>Accesorios</Text>
-          <View style={styles.containerScroll}>
-            <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-              <View style={styles.card}>
-                <TouchableOpacity style={styles.buttonCard}></TouchableOpacity>
-                <View style={styles.precioCard}>
-                  <Text style={styles.titlemoney}></Text>
-                </View>
-              </View>
-            </ScrollView>
-          </View>
-        </ScrollView>
-      </View>
+        <Text style={styles.title}>Juguetes</Text>
+        <View style={styles.containerScroll}>
+          <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
+            {juguetesData.map((item) => (
+              <Card key={item.id} price={item.price} image={item.image} />
+            ))}
+          </ScrollView>
+        </View>
+        <Text style={styles.title}>Accesorios</Text>
+        <View style={styles.containerScroll}>
+          <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
+            {accesoriosData.map((item) => (
+              <Card key={item.id} price={item.price} image={item.image} />
+            ))}
+          </ScrollView>
+        </View>
+      </ScrollView>
     </View>
   );
 };
+
+const Card = ({ price, image }) => (
+  <View style={styles.card}>
+    <TouchableOpacity style={styles.buttonCard}>
+      <Image source={image} style={styles.cardImage} />
+    </TouchableOpacity>
+    <View style={styles.precioCard}>
+      <Text style={styles.titlemoney}>{price}</Text>
+    </View>
+  </View>
+);
 
 export default Home;
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
     backgroundColor: '#FAFFD8',
     padding: 10,
-  },
-  title: {
-    fontSize: 30,
+    width: '100%',
+    height:'95%',
   },
   container_search: {
-    width: '80%',
-    height: 200,
+    marginTop:30,
+    width: '100%',
+    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },
   hueso: {
-    flex: 1,
-    position: 'absolute',
-    width: 410,
-    height: '80%',
+    position:'absolute',
+    height:'100%',
+    width: '100%',
   },
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   input: {
-    width: 250,
-    height: 45,
+    width: 190,
+    height: 35,
     fontSize: 20,
-    marginLeft: 5,
     paddingLeft: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    borderWidth: 0.5,
   },
   searchIcon: {
     fontSize: 30,
+    marginLeft: 2,
   },
   container_store: {
+    flex: 1,
     width: '100%',
-    height: '80%',
-    marginBottom: 1,
   },
-
   selec_Masco: {
-    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
     height: 150,
@@ -181,63 +131,57 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '40%',
     alignItems: 'center',
-    alignContent: 'center',
-  },
-  butImCat: {
-    width: '100%',
-    height: '100%',
-  },
-  butImDog: {
-    width: '85%',
-    height: '85%',
-  },
-  store: {
-    width: '100%',
-  },
-  containerScroll: {
-    with: '100%',
-    height: 250,
-    borderWidth: 2,
-    padding: 10,
+    justifyContent: 'center',
   },
 
+  title: {
+    fontSize: 30,
+    marginVertical: 10,
+  },
+  containerScroll: {
+    width: '100%',
+    height: 250,
+    borderWidth: 2,
+    borderColor: '#DDD',
+    padding: 10,
+    borderRadius: 10,
+  },
   containerCard: {
     height: '100%',
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   card: {
     width: 130,
     height: '100%',
-    marginHorizontal:6,
-    borderWidth: 3,
+    marginHorizontal: 6,
+    borderWidth: 2,
+    borderColor: '#DDD',
     borderRadius: 15,
-  },
-  butcar: {
-    width: '100%',
-    height: '100%',
+    overflow: 'hidden',
+    backgroundColor: 'white',
   },
   buttonCard: {
-    height: '100%',
-    width: '100%',
+    flex: 1,
     alignItems: 'center',
-    alignContent: 'center',
-    padding: 5,
+    justifyContent: 'center',
+  },
+  cardImage: {
+    width: '100%',
+    height: '80%',
+    resizeMode: 'contain',
   },
   precioCard: {
     position: 'absolute',
-    bottom: 3,
+    bottom: 0,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
     height: 40,
-    backgroundColor: 'rgba(2, 30, 10, 0.5)',
-    marginBottom: 5,
+    backgroundColor: 'rgba(2, 30, 10, 0.7)',
   },
   titlemoney: {
-    fontSize: 30,
-    margin: 1,
+    fontSize: 20,
     color: 'white',
     fontWeight: 'bold',
   },

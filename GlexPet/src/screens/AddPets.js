@@ -23,13 +23,13 @@ const AddPets = () => {
         </View>
 
         <View style={styleAddPets.Profile}>
-          <Text>Nombre</Text>
+          <Text style={styleAddPets.title}>Nombre</Text>
           <TextInput style={styleAddPets.TextInput} placeholder='Ingrese el nombre de la mascota' />
 
-          <Text>Descripción</Text>
+          <Text style={styleAddPets.title}>Descripción</Text>
           <TextInput style={styleAddPets.TextInput} placeholder='Describa a su mascota (opcional)' />
 
-          <Text>Fecha de Nacimiento</Text>
+          <Text style={styleAddPets.title}>Fecha de Nacimiento</Text>
           <TextInput style={styleAddPets.TextInput} placeholder='Ingrese la fecha de nacimiento de la mascota' />
         </View>
       </View>
@@ -87,6 +87,9 @@ const styleAddPets = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
   },
+  title:{
+    fontSize:20,
+  },
   containerCmBox: {
     width: '100%',
     backgroundColor: '#8ca1d3',
@@ -96,7 +99,7 @@ const styleAddPets = StyleSheet.create({
     marginBottom: 20,
   },
   comboBox: {
-    width: '100%',
+    width: '90%',
     marginVertical: 10,
   },
   TextInput: {
@@ -108,8 +111,8 @@ const styleAddPets = StyleSheet.create({
     padding: 10,
   },
   containerImg: {
+    marginTop:80,
     width: '40%',
-    padding: 20,
   },
   logo: {
     width: '100%',

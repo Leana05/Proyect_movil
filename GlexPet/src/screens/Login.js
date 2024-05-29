@@ -1,34 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
 
 const Login = () => {
   return (
-    <View style={styles_login.container}>
+    <View style={styles_login.containerAll}>
       {/* Círculos naranjas */}
       <View style={styles_login.orangeCircleTopLeft} />
       <View style={styles_login.orangeCircleTopLeft1} />
 
       <View style={styles_login.orangeCircleBottomRight} />
       <View style={styles_login.orangeCircleBottomRight1} />
-
-      <View style={styles_login.login_container}>
-        <Text style={styles_login.title}>Inicio de Sesión</Text>
-        <View style={styles_login.login}>
-          <TextInput style={styles_login.input} placeholder='Usuario'></TextInput>
-          <TextInput style={styles_login.input} placeholder='Contraseña'></TextInput>
-          <View>
-            <Text>¿Ha olvidado su contraseña?</Text>
-          </View>
-          <View style={styles_login.button_container}>
-            <TouchableOpacity style={styles_login.loginButton}>
-              <Text style={styles_login.loginButtonText}>Ingresar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles_login.loginButton}>
-              <Text style={styles_login.loginButtonText}>Registrar</Text>
-            </TouchableOpacity>
+        <View style={styles_login.dog}>
+          <Image source={require('../img/perritologin.png')} style={styles_login.Img} />
+        </View>
+        <View style={styles_login.login_container}>
+          <Text style={styles_login.title}>Inicio de Sesión</Text>
+          <View style={styles_login.login}>
+            <TextInput style={styles_login.input} placeholder='Usuario'></TextInput>
+            <TextInput style={styles_login.input} placeholder='Contraseña'></TextInput>
+            <View>
+              <Text>¿Ha olvidado su contraseña?</Text>
+            </View>
+            <View style={styles_login.button_container}>
+              <TouchableOpacity style={styles_login.loginButton}>
+                <Text style={styles_login.loginButtonText}>Ingresar</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles_login.loginButton}>
+                <Text style={styles_login.loginButtonText}>Registrar</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
     </View>
   );
 };
@@ -36,7 +38,7 @@ const Login = () => {
 export default Login;
 
 const styles_login = StyleSheet.create({
-  container: {
+  containerAll: {
     display: 'flex',
     width: '100%',
     height: '100%',
@@ -44,10 +46,18 @@ const styles_login = StyleSheet.create({
     backgroundColor: '#FAFFD8',
     alignItems: 'center',
   },
+  dog: {
+    width: 150,
+    height: 90,
+  },
+  Img: {
+    width: '100%',
+    height: '100%',
+  },
   login_container: {
     flexDirection: 'column',
     width: '90%',
-    height: '50%',
+    height: 450,
     backgroundColor: 'rgba(0, 0, 0, 0.25)',
     borderRadius: 10,
     borderWidth: 3,
@@ -57,6 +67,7 @@ const styles_login = StyleSheet.create({
   title: {
     marginTop: 30,
     fontSize: 50,
+    fontWeight: 'bold',
     color: 'white',
   },
   login: {
@@ -100,6 +111,7 @@ const styles_login = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
+
   orangeCircleTopLeft: {
     position: 'absolute',
     top: -150,
@@ -120,7 +132,8 @@ const styles_login = StyleSheet.create({
   },
   orangeCircleBottomRight: {
     position: 'absolute',
-    bottom: -150,
+    // bottom: -150,
+    top: 830,
     right: -50,
     width: 250,
     height: 250,
@@ -129,7 +142,8 @@ const styles_login = StyleSheet.create({
   },
   orangeCircleBottomRight1: {
     position: 'absolute',
-    bottom: -250,
+    // bottom: -250,
+    top: 860,
     right: 80,
     width: 300,
     height: 300,
