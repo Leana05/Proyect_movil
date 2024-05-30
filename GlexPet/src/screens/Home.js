@@ -1,12 +1,11 @@
 
-import { FontAwesome } from '@expo/vector-icons'; // Importa el icono de FontAwesome
+import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { Image, ScrollView, StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
 
-// para los iconos se instalo npm install @expo/vector-icons
 const Home = () => {
   const comidaData = [
-    // { id: 1, price: '$10', image: require('../img/perrito.png') }, 
+    // { id: 1, price: '$10', image: require('../img/perrito.png') },
     // { id: 2, price: '$20', image: require('../img/comida2.png') },
     // Añadir más datos según sea necesario
   ];
@@ -26,7 +25,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <View style={styles.container_search}>
-        <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode="stretch" />
+        <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode='stretch' />
         <View style={styles.searchContainer}>
           <TextInput style={styles.input} placeholder='Buscar...' />
           <TouchableOpacity onPress={() => console.log('Search pressed')}>
@@ -35,10 +34,6 @@ const Home = () => {
         </View>
       </View>
       <ScrollView style={styles.container_store}>
-        {/* <View style={styles.selec_Masco}>
-          <TouchableOpacity style={styles.imageButton}></TouchableOpacity>
-          <TouchableOpacity style={styles.imageButton}></TouchableOpacity>
-        </View> */}
         <Text style={styles.title}>Comida</Text>
         <View style={styles.containerScroll}>
           <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
@@ -86,18 +81,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFFD8',
     padding: 10,
     width: '100%',
-    height:'95%',
+    height: '100%',
   },
   container_search: {
-    marginTop:30,
+    marginTop: 30,
     width: '100%',
     height: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },
   hueso: {
-    position:'absolute',
-    height:'100%',
+    position: 'absolute',
+    height: '100%',
     width: '100%',
   },
   searchContainer: {
@@ -121,19 +116,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-  selec_Masco: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    height: 150,
-    marginBottom: 5,
-  },
-  imageButton: {
-    height: '100%',
-    width: '40%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
   title: {
     fontSize: 30,
     marginVertical: 10,
