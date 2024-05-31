@@ -36,7 +36,7 @@ const Home = ({navigation}) => {
         ))}
       </View>
       <Text style={styles.title}>Categorias Perros</Text>
-      <View style={styles.containerScroll} onPress={ChangeProducts}>
+      <View style={styles.containerScroll}>
         {comidaData.map((item) => (
           <TouchableOpacity key={item.id} style={styles.cardContainer} onPress={ChangeProducts}>
             <Card price={item.price} image={item.image} />
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFFD8',
     padding: 10,
     width: '100%',
-    height: '100%',
   },
   container_search: {
     marginTop: 30,
