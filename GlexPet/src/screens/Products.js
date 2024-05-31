@@ -1,252 +1,154 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Image, Text, FlatList, SafeAreaView, TouchableOpacity } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 
-const products = [
-    { id: '1', name: 'PRODUCTO 1', quantity: '1', price: '$1000' },
-    { id: '2', name: 'PRODUCTO 2', quantity: '2', price: '$2000' },
-    { id: '3', name: 'PRODUCTO 3', quantity: '3', price: '$3000' },
-    { id: '4', name: 'PRODUCTO 4', quantity: '4', price: '$4000' },
-];
-
-const Catalog = () => {
-    const renderItem = ({ item }) => (
-        <View style={styleCatalog.cardProduct}>
-            <View style={styleCatalog.containerImg}>
-                <Image style={styleCatalog.img} source={require('../img/Logo.png')} resizeMode='contain' />
-            </View>
-            <View style={styleCatalog.containerInfo}>
-                <Text style={styleCatalog.text}>{item.name}</Text>
-                <Text style={styleCatalog.text}>PRECIO: {item.price}</Text>
-                <TouchableOpacity onPress={() => { }} style={styleCatalog.addToCartButton}>
-                    <Text style={styleCatalog.addToCartButtonText}>Añadir al carrito</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
-
-    return (
-        <SafeAreaView style={styleCatalog.containerAll}>
-            <ScrollView contentContainerStyle={styleCatalog.container}>
-                <View style={styleCatalog.decorative1}></View>
-                <View style={styleCatalog.decorative2}></View>
-                <View style={styleCatalog.buttonsContainer}>
-                    <TouchableOpacity style={styleCatalog.button}>
-                        <Text>Gato</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styleCatalog.button}>
-                        <Text>Perro</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styleCatalog.orderByContainer}>
-                    <Text>Ordenar por:</Text>
-                    <View style={styleCatalog.filter}>
-                        <Text>Alimento</Text>
-                    </View>
-                    <View style={styleCatalog.filter}>
-                        <Text>Subcategoría</Text>
-                    </View>
-                </View>
-                <FlatList
-                    data={products}
-                    keyExtractor={(item) => item.id}
-                    numColumns={2}
-                    contentContainerStyle={styleCatalog.containerScroll}
-                    renderItem={renderItem}
-                />
-            </ScrollView>
-        </SafeAreaView>
-    );
+// Importar imágenes locales
+const images = {
+  // gato: require('../img/Gato.png'),
+  // perro: require('../img/perrito.png'),
 };
 
-const styleCatalog = StyleSheet.create({
-    containerAll: {
-        flex: 1,
-        backgroundColor: '#faffd8',
-    },
-    container: {
-        alignItems: 'center',
-    },
-    decorative1: {
-        position: 'absolute',
-        width: '110%',
-        height: 70,
-        backgroundColor: '#D676C1',
-        top: 0,
-    },
+const products = [
+  {
+    id: '1',
+    name: 'Fruitables - Snack Para Gato Atún Y Calabaza',
+    price: '$16,150',
+    originalPrice: '$19,000',
+    discountPrice: '$17,670',
+    weight: '70 GR',
+    image: images.gato,
+  },
+  {
+    id: '2',
+    name: 'Fruitables Snack Para Gato Salmon Y Arandanos',
+    price: '$16,618',
+    originalPrice: '$19,550',
+    discountPrice: '$18,182',
+    weight: '70 GR',
+    image: images.perro,
+  },
+];
 
-    decorative2: {
-        position: 'absolute',
-        width: '100%',
-        height: 5,
-        backgroundColor: '#9EE6DF',
-        top: 60,
-    },
+const ProductItem = ({ item }) => (
+  <View style={styles.productContainer}>
+    <View style={styles.offerTag}>
+      <Text style={styles.offerText}>Oferta</Text>
+    </View>
+    <Image source={item.image} style={styles.productImage} />
+    <Text style={styles.productName}>{item.name}</Text>
+    <Text style={styles.productPrice}>{item.price}</Text>
+    <Text style={styles.discountPrice}>
+      {item.discountPrice} <Text style={styles.originalPrice}>{item.originalPrice}</Text>
+    </Text>
+    <Text style={styles.weight}>{item.weight}</Text>
+  </View>
+);
 
-    buttonsContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        marginVertical: 10,
-    },
-    button: {
-        backgroundColor: '#9ee6df',
-        borderRadius: 4,
-        paddingVertical: 8,
-        paddingHorizontal: 12,
-        marginRight: 10,
-    },
-    orderByContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 10,
-    },
-    filter: {
-        backgroundColor: '#9ee6df',
-        borderRadius: 4,
-        paddingVertical: 8,
-        paddingHorizontal: 12,
-        marginHorizontal: 5,
-    },
-    containerScroll: {
-        alignItems: 'center',
-        paddingHorizontal: '2%',
-        paddingTop: '2%',
-    },
-    cardProduct: {
-        backgroundColor: '#8ca1d3',
-        width: '48%',
-        marginHorizontal: '1%',
-        marginBottom: 10,
-        borderWidth: 2,
-        borderRadius: 20,
-        borderColor: '#d676c1',
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 10,
-    },
-    containerImg: {
-        width: '40%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    img: {
-        width: '100%',
-        height: 100,
-        borderRadius: 10,
-    },
-    containerInfo: {
-        width: '60%',
-        paddingLeft: 10,
-    },
-    text: {
-        fontWeight: 'bold',
-        marginBottom: 5,
-    },
-    addToCartButton: {
-        backgroundColor: '#9ee6df',
-        borderRadius: 4,
-        paddingVertical: 8,
-        paddingHorizontal: 12,
-        marginTop: 10,
-    },
-    addToCartButtonText: {
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.containerSearch}>
+        <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode='stretch' />
+        <View style={styles.searchContainer}>
+          <TextInput style={styles.input} placeholder='Buscar...' />
+          <TouchableOpacity onPress={() => console.log('Search pressed')}>
+            <FontAwesome name='search' size={24} color='black' style={styles.searchIcon} />
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+      <FlatList
+        data={products}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <ProductItem item={item} />}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FAFFD8',
+    padding: 10,
+  },
+  containerSearch: {
+    marginTop: 30,
+    width: '100%',
+    height: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  hueso: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  input: {
+    width: 190,
+    height: 35,
+    fontSize: 20,
+    paddingLeft: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    borderWidth: 0.5,
+  },
+  searchIcon: {
+    fontSize: 30,
+    marginLeft: 2,
+  },
+  productContainer: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#EEE',
+    paddingVertical: 15,
+    marginVertical: 10,
+  },
+  offerTag: {
+    backgroundColor: '#FF6F61',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 3,
+    alignSelf: 'flex-start',
+    marginBottom: 5,
+  },
+  offerText: {
+    color: '#FFF',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  productImage: {
+    width: '100%',
+    height: 150,
+    resizeMode: 'cover',
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  productName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  productPrice: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#DAA520',
+    marginBottom: 5,
+  },
+  discountPrice: {
+    fontSize: 14,
+    marginBottom: 5,
+  },
+  originalPrice: {
+    textDecorationLine: 'line-through',
+    color: '#A9A9A9',
+  },
+  weight: {
+    fontSize: 12,
+    color: '#A9A9A9',
+  },
 });
 
-export default Catalog;
-
-// import React from 'react';
-// import { ScrollView, StyleSheet, View, Image, Text, FlatList, SafeAreaView, TouchableOpacity } from 'react-native';
-
-// const products = [
-//     { id: '1', name: 'PRODUCTO 1', quantity: '1', price: '$1000' },
-//     { id: '2', name: 'PRODUCTO 2', quantity: '2', price: '$2000' },
-//     { id: '3', name: 'PRODUCTO 3', quantity: '3', price: '$3000' },
-//     { id: '4', name: 'PRODUCTO 4', quantity: '4', price: '$4000' },
-// ];
-
-// const Catalog = () => {
-//     const renderItem = ({ item }) => (
-//         <View style={styleCatalog.cardProduct}>
-//             <View style={styleCatalog.containerImg}>
-//                 <Image style={styleCatalog.img} source={require('../img/Logo.png')} resizeMode='contain' />
-//             </View>
-//             <View style={styleCatalog.containerInfo}>
-//                 <Text style={styleCatalog.text}>{item.name}</Text>
-//                 <Text style={styleCatalog.text}>PRECIO: {item.price}</Text>
-//                 <TouchableOpacity onPress={() => { }} style={styleCatalog.addToCartButton}>
-//                     <Text style={styleCatalog.addToCartButtonText}>Añadir al carrito</Text>
-//                 </TouchableOpacity>
-//             </View>
-//         </View>
-//     );
-
-//     return (
-//         <SafeAreaView style={styleCatalog.containerAll}>
-//             <FlatList
-//                 data={products}
-//                 keyExtractor={(item) => item.id}
-//                 numColumns={2}
-//                 contentContainerStyle={styleCatalog.containerScroll}
-//                 renderItem={renderItem}
-//             />
-//         </SafeAreaView>
-//     );
-// };
-
-// const styleCatalog = StyleSheet.create({
-//     containerAll: {
-//         flex: 1,
-//         backgroundColor: '#faffd8',
-//     },
-//     containerScroll: {
-//         alignItems: 'center',
-//         paddingHorizontal: '2%',
-//         paddingTop: '2%',
-//     },
-//     cardProduct: {
-//         backgroundColor: '#8ca1d3',
-//         width: '48%',
-//         marginHorizontal: '1%',
-//         marginBottom: 10,
-//         borderWidth: 2,
-//         borderRadius: 20,
-//         borderColor: '#d676c1',
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         padding: 10,
-//     },
-//     containerImg: {
-//         width: '40%',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//     },
-//     img: {
-//         width: '100%',
-//         height: 100,
-//         borderRadius: 10,
-//     },
-//     containerInfo: {
-//         width: '60%',
-//         paddingLeft: 10,
-//     },
-//     text: {
-//         fontWeight: 'bold',
-//         marginBottom: 5,
-//     },
-//     addToCartButton: {
-//         backgroundColor: '#9ee6df',
-//         borderRadius: 4,
-//         paddingVertical: 8,
-//         paddingHorizontal: 12,
-//         marginTop: 10,
-//     },
-//     addToCartButtonText: {
-//         fontWeight: 'bold',
-//         textAlign: 'center',
-//     },
-// });
-
-// export default Catalog;
+export default App;

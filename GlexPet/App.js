@@ -12,6 +12,7 @@ import AddPets from './src/screens/AddPets';
 import Cart from './src/screens/Cart';
 import User from './src/screens/User';
 import Program from './src/screens/Program';
+import Products from './src/screens/Products';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -64,7 +65,7 @@ export default function App() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 1500);
   }, []);
 
   if (isLoading) {
@@ -76,6 +77,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='SignUp' component={SignUp} />
+        <Stack.Screen name='Products' component={Products} />
         <Stack.Screen name='MainTabs' component={MainTabs} />
       </Stack.Navigator>
     </NavigationContainer>
