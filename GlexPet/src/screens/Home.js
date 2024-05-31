@@ -1,32 +1,25 @@
-
-import { FontAwesome } from '@expo/vector-icons'; // Importa el icono de FontAwesome
+import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { Image, ScrollView, StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
 
-// para los iconos se instalo npm install @expo/vector-icons
-const Home = () => {
+const Home = ({navigation}) => {
+
+  const ChangeProducts = () => {
+    navigation.navigate('Products');
+  };
+
   const comidaData = [
-    // { id: 1, price: '$10', image: require('../img/perrito.png') }, 
-    // { id: 2, price: '$20', image: require('../img/comida2.png') },
-    // Añadir más datos según sea necesario
-  ];
-
-  const juguetesData = [
-    // { id: 1, price: '$5', image: require('../img/juguete1.png') },
-    // { id: 2, price: '$15', image: require('../img/juguete2.png') },
-    // Añadir más datos según sea necesario
-  ];
-
-  const accesoriosData = [
-    // { id: 1, price: '$8', image: require('../img/accesorio1.png') },
-    // { id: 2, price: '$18', image: require('../img/accesorio2.png') },
-    // Añadir más datos según sea necesario
+    { id: 1, price: 'Alimento' },
+    { id: 2, price: 'Arena' },
+    { id: 3, price: 'Accesorios' },
+    { id: 4, price: 'Snacks' },
+    // Añade más items según sea necesario
   ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.container_search}>
-        <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode="stretch" />
+        <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode='stretch' />
         <View style={styles.searchContainer}>
           <TextInput style={styles.input} placeholder='Buscar...' />
           <TouchableOpacity onPress={() => console.log('Search pressed')}>
@@ -34,37 +27,23 @@ const Home = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView style={styles.container_store}>
-        {/* <View style={styles.selec_Masco}>
-          <TouchableOpacity style={styles.imageButton}></TouchableOpacity>
-          <TouchableOpacity style={styles.imageButton}></TouchableOpacity>
-        </View> */}
-        <Text style={styles.title}>Comida</Text>
-        <View style={styles.containerScroll}>
-          <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
-            {comidaData.map((item) => (
-              <Card key={item.id} price={item.price} image={item.image} />
-            ))}
-          </ScrollView>
-        </View>
-        <Text style={styles.title}>Juguetes</Text>
-        <View style={styles.containerScroll}>
-          <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
-            {juguetesData.map((item) => (
-              <Card key={item.id} price={item.price} image={item.image} />
-            ))}
-          </ScrollView>
-        </View>
-        <Text style={styles.title}>Accesorios</Text>
-        <View style={styles.containerScroll}>
-          <ScrollView contentContainerStyle={styles.containerCard} horizontal={true}>
-            {accesoriosData.map((item) => (
-              <Card key={item.id} price={item.price} image={item.image} />
-            ))}
-          </ScrollView>
-        </View>
-      </ScrollView>
-    </View>
+      <Text style={styles.title}>Categorias Gatos</Text>
+      <View style={styles.containerScroll}>
+        {comidaData.map((item) => (
+          <TouchableOpacity key={item.id} style={styles.cardContainer} onPress={ChangeProducts}>
+            <Card price={item.price} image={item.image} />
+          </TouchableOpacity>
+        ))}
+      </View>
+      <Text style={styles.title}>Categorias Perros</Text>
+      <View style={styles.containerScroll}>
+        {comidaData.map((item) => (
+          <TouchableOpacity key={item.id} style={styles.cardContainer} onPress={ChangeProducts}>
+            <Card price={item.price} image={item.image} />
+          </TouchableOpacity>
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -86,18 +65,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFFD8',
     padding: 10,
     width: '100%',
-    height:'95%',
   },
   container_search: {
-    marginTop:30,
+    marginTop: 30,
     width: '100%',
     height: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },
   hueso: {
-    position:'absolute',
-    height:'100%',
+    position: 'absolute',
+    height: '100%',
     width: '100%',
   },
   searchContainer: {
@@ -117,46 +95,26 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginLeft: 2,
   },
-  container_store: {
-    flex: 1,
-    width: '100%',
-  },
-  selec_Masco: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    height: 150,
-    marginBottom: 5,
-  },
-  imageButton: {
-    height: '100%',
-    width: '40%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  title: {
+  title:{
     fontSize: 30,
-    marginVertical: 10,
+    margin:10,
   },
   containerScroll: {
-    width: '100%',
-    height: 250,
-    borderWidth: 2,
-    borderColor: '#DDD',
-    padding: 10,
-    borderRadius: 10,
-  },
-  containerCard: {
-    height: '100%',
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
+    padding: 10,
+  },
+  cardContainer: {
+    width: '48%',
+    marginBottom: 10,
   },
   card: {
-    width: 130,
-    height: '100%',
-    marginHorizontal: 6,
-    borderWidth: 2,
-    borderColor: '#DDD',
+    width: '80%', // Adjusted to take full width of the container
+    height: 250,
+    marginVertical: 6,
+    borderWidth: 5,
+    borderColor: '#000',
     borderRadius: 15,
     overflow: 'hidden',
     backgroundColor: 'white',

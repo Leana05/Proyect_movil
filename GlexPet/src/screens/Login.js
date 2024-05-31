@@ -1,7 +1,17 @@
+
 import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
 
-const Login = () => {
+const Login = ({ navigation }) => {
+  
+  const handleLogin = () => {
+    navigation.navigate('MainTabs');
+  };
+
+  const ChangeSignUp = () => {
+    navigation.navigate('SignUp');
+  };
+
   return (
     <View style={styles_login.containerAll}>
       {/* Círculos naranjas */}
@@ -10,27 +20,27 @@ const Login = () => {
 
       <View style={styles_login.orangeCircleBottomRight} />
       <View style={styles_login.orangeCircleBottomRight1} />
-        <View style={styles_login.dog}>
-          <Image source={require('../img/perritologin.png')} style={styles_login.Img} />
-        </View>
-        <View style={styles_login.login_container}>
-          <Text style={styles_login.title}>Inicio de Sesión</Text>
-          <View style={styles_login.login}>
-            <TextInput style={styles_login.input} placeholder='Usuario'></TextInput>
-            <TextInput style={styles_login.input} placeholder='Contraseña'></TextInput>
-            <View>
-              <Text>¿Ha olvidado su contraseña?</Text>
-            </View>
-            <View style={styles_login.button_container}>
-              <TouchableOpacity style={styles_login.loginButton}>
-                <Text style={styles_login.loginButtonText}>Ingresar</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles_login.loginButton}>
-                <Text style={styles_login.loginButtonText}>Registrar</Text>
-              </TouchableOpacity>
-            </View>
+      <View style={styles_login.dog}>
+        <Image source={require('../img/perritologin.png')} style={styles_login.Img} />
+      </View>
+      <View style={styles_login.login_container}>
+        <Text style={styles_login.title}>Inicio de Sesión</Text>
+        <View style={styles_login.login}>
+          <TextInput style={styles_login.input} placeholder='Usuario' />
+          <TextInput style={styles_login.input} placeholder='Contraseña' secureTextEntry />
+          <View>
+            <Text>¿Ha olvidado su contraseña?</Text>
+          </View>
+          <View style={styles_login.button_container}>
+            <TouchableOpacity style={styles_login.loginButton} onPress={handleLogin}>
+              <Text style={styles_login.loginButtonText}>Ingresar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles_login.loginButton} onPress={ChangeSignUp}>
+              <Text style={styles_login.loginButtonText}>Registrar</Text>
+            </TouchableOpacity>
           </View>
         </View>
+      </View>
     </View>
   );
 };
@@ -111,7 +121,6 @@ const styles_login = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
-
   orangeCircleTopLeft: {
     position: 'absolute',
     top: -150,
@@ -132,7 +141,6 @@ const styles_login = StyleSheet.create({
   },
   orangeCircleBottomRight: {
     position: 'absolute',
-    // bottom: -150,
     top: 830,
     right: -50,
     width: 250,
@@ -142,7 +150,6 @@ const styles_login = StyleSheet.create({
   },
   orangeCircleBottomRight1: {
     position: 'absolute',
-    // bottom: -250,
     top: 860,
     right: 80,
     width: 300,

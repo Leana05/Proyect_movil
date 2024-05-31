@@ -77,7 +77,7 @@ const styleAddPets = StyleSheet.create({
     backgroundColor: '#faffd8',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal:20
+    paddingHorizontal:20,
   },
   containerHead: {
     width: '100%',
