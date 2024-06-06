@@ -26,7 +26,7 @@ const Login = ({ navigation }) => {
       <View style={styles_login.login_container}>
         <Text style={styles_login.title}>Inicio de Sesión</Text>
         <View style={styles_login.login}>
-          <TextInput style={styles_login.input} placeholder='Usuario' />
+          <TextInput style={styles_login.input} placeholder='Correo' />
           <TextInput style={styles_login.input} placeholder='Contraseña' secureTextEntry />
           <View>
             <Text>¿Ha olvidado su contraseña?</Text>

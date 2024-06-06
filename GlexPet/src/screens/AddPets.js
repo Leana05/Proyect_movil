@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, View, StyleSheet, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import SelectInput from 'react-native-picker-select';
 
-const AddPets = () => {
+const AddPets = ({ navigation }) => {
   const Especie = [
     { label: 'Canino', value: '0' },
     { label: 'Felino', value: '1' },
@@ -14,9 +14,12 @@ const AddPets = () => {
     { label: 'Hembra', value: '0' },
     { label: 'Macho', value: '1' },
   ];
-
+  const ChangePets = () => {
+    navigation.navigate('Pets');
+  };
   return (
     <ScrollView contentContainerStyle={styleAddPets.containerPets}>
+
       <View style={styleAddPets.containerHead}>
         <View style={styleAddPets.containerImg}>
           <Image style={styleAddPets.logo} resizeMethod='resize' source={require('../img/Logo.png')} />
@@ -62,7 +65,7 @@ const AddPets = () => {
         </View>
 
         <View style={styleAddPets.btnSeparator}>
-          <TouchableOpacity style={styleAddPets.touchable}>
+          <TouchableOpacity style={styleAddPets.touchable} onPress={ChangePets}>
             <Text style={styleAddPets.txtButton}>Ver Mascotas</Text>
           </TouchableOpacity>
         </View>
@@ -77,7 +80,13 @@ const styleAddPets = StyleSheet.create({
     backgroundColor: '#faffd8',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal:20,
+    paddingHorizontal: 20,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    zIndex: 1,
   },
   containerHead: {
     width: '100%',
@@ -87,8 +96,8 @@ const styleAddPets = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
   },
-  title:{
-    fontSize:20,
+  title: {
+    fontSize: 20,
   },
   containerCmBox: {
     width: '100%',
@@ -111,7 +120,7 @@ const styleAddPets = StyleSheet.create({
     padding: 10,
   },
   containerImg: {
-    marginTop:80,
+    marginTop: 80,
     width: '40%',
   },
   logo: {
