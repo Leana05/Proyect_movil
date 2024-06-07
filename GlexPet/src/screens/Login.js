@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, Text, TextInput, Pressable, View, Image } from 'react-native';
 
 const Login = ({ navigation }) => {
   
@@ -32,12 +32,12 @@ const Login = ({ navigation }) => {
             <Text>¿Ha olvidado su contraseña?</Text>
           </View>
           <View style={styles_login.button_container}>
-            <TouchableOpacity style={styles_login.loginButton} onPress={handleLogin}>
+            <Pressable style={styles_login.loginButton} onPress={handleLogin}>
               <Text style={styles_login.loginButtonText}>Ingresar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles_login.loginButton} onPress={ChangeSignUp}>
+            </Pressable>
+            <Pressable style={styles_login.loginButton} onPress={ChangeSignUp}>
               <Text style={styles_login.loginButtonText}>Registrar</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       </View>

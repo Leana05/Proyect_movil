@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
+  Pressable,
   View,
   KeyboardAvoidingView,
   Platform,
@@ -58,12 +58,12 @@ const User = () => {
           </View>
 
           <View style={stylesUser.button_container}>
-            <TouchableOpacity style={stylesUser.loginButton}>
+            <Pressable style={stylesUser.loginButton}>
               <Text style={stylesUser.loginButtonText}>Cerrar Sesión</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={stylesUser.loginButton}>
+            </Pressable>
+            <Pressable style={stylesUser.loginButton}>
               <Text style={stylesUser.loginButtonText}>Eliminar Cueta</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       </ScrollView>

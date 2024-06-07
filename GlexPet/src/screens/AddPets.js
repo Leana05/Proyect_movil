@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, StyleSheet, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import SelectInput from 'react-native-picker-select';
 
 const AddPets = ({ navigation }) => {
@@ -59,15 +59,15 @@ const AddPets = ({ navigation }) => {
 
       <View style={styleAddPets.fitButton}>
         <View style={styleAddPets.btnSeparator}>
-          <TouchableOpacity style={styleAddPets.touchable}>
+          <Pressable style={styleAddPets.touchable}>
             <Text style={styleAddPets.txtButton}>Guardar</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
 
         <View style={styleAddPets.btnSeparator}>
-          <TouchableOpacity style={styleAddPets.touchable} onPress={ChangePets}>
+          <Pressable style={styleAddPets.touchable} onPress={ChangePets}>
             <Text style={styleAddPets.txtButton}>Ver Mascotas</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     </ScrollView>

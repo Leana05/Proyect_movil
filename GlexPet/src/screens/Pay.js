@@ -1,7 +1,7 @@
 // export default Pay;
 import React, { useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, Pressable } from 'react-native';
 
 // Importar imágenes locales
 const images = {
@@ -79,9 +79,9 @@ const Pay = ({ navigation }) => {
     <View style={styles.container}>
       {!confirming ? (
         <>
-          <TouchableOpacity style={styles.backButton} onPress={ChangeHome}>
+          <Pressable style={styles.backButton} onPress={ChangeHome}>
             <FontAwesome name='arrow-left' size={27} color='black' />
-          </TouchableOpacity>
+          </Pressable>
           <FlatList
             data={products}
             keyExtractor={(item) => item.id}
@@ -89,20 +89,20 @@ const Pay = ({ navigation }) => {
             contentContainerStyle={{ paddingBottom: 100 }}
             style={{ flexGrow: 1 }}
           />
-          <TouchableOpacity style={styles.purchaseButton} onPress={handlePurchase}>
+          <Pressable style={styles.purchaseButton} onPress={handlePurchase}>
             <Text style={styles.purchaseButtonText}>Comprar</Text>
-          </TouchableOpacity>
+          </Pressable>
         </>
       ) : (
         <View style={styles.confirmContainer}>
           <Text style={styles.confirmText}>¿Confirmar compra?</Text>
           <View style={styles.confirmButtons}>
-            <TouchableOpacity style={styles.confirmButton} onPress={confirmPurchase}>
+            <Pressable style={styles.confirmButton} onPress={confirmPurchase}>
               <Text style={styles.confirmButtonText}>Sí</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.confirmButton} onPress={cancelPurchase}>
+            </Pressable>
+            <Pressable style={styles.confirmButton} onPress={cancelPurchase}>
               <Text style={styles.confirmButtonText}>No</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       )}

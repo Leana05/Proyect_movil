@@ -12,7 +12,7 @@ import {
   TextInput,
   FlatList,
   SafeAreaView,
-  TouchableOpacity,
+  Pressable,
 } from 'react-native';
 
 const products = [
@@ -44,9 +44,9 @@ const Cart = ({navigation}) => {
               <Text style={styleCart.text}>PRECIO</Text>
               <TextInput editable={false} style={styleCart.textInput} value={item.price} />
             </View>
-            <TouchableOpacity style={styleCart.TrashButton}>
+            <Pressable style={styleCart.TrashButton}>
               <FontAwesome name='trash' size={27} color='black' />
-            </TouchableOpacity>
+            </Pressable>
           </View>
         )}
       />
@@ -55,9 +55,9 @@ const Cart = ({navigation}) => {
           Valor total a pagar: <TextInput editable={false} value='$10000' style={styleCart.textInput} />
         </Text>
       </View>
-      <TouchableOpacity style={styleCart.purchaseButton} onPress={ChangePay}>
+      <Pressable style={styleCart.purchaseButton} onPress={ChangePay}>
         <Text style={styleCart.purchaseButtonText}>Comprar</Text>
-      </TouchableOpacity>
+      </Pressable>
     </SafeAreaView>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, TextInput, Text, Pressable, ScrollView, Image } from 'react-native';
 
 const SignUp = () => {
     return (
@@ -25,9 +25,9 @@ const SignUp = () => {
           <TextInput style={stylesSignUp.input} placeholder='Contraseña'></TextInput>
           <TextInput style={stylesSignUp.input} placeholder='Confirmar Contraseña'></TextInput>
 
-          <TouchableOpacity style={stylesSignUp.SignUpButton}>
+          <Pressable style={stylesSignUp.SignUpButton}>
             <Text style={stylesSignUp.SignUptext}>Registrar</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </ScrollView>
     );

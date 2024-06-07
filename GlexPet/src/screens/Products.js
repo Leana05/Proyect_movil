@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, Pressable } from 'react-native';
 
 // Importar imágenes locales
 const images = {
@@ -52,17 +52,17 @@ const App = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={ChangeHome}>
+      <Pressable style={styles.backButton} onPress={ChangeHome}>
         <FontAwesome name='arrow-left' size={27} color='black' />
-      </TouchableOpacity>
+      </Pressable>
 
       <ScrollView contentContainerStyle={styles.containerSearch}>
         <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode='stretch' />
         <View style={styles.searchContainer}>
           <TextInput style={styles.input} placeholder='Buscar...' />
-          <TouchableOpacity onPress={() => console.log('Search pressed')}>
+          <Pressable onPress={() => console.log('Search pressed')}>
             <FontAwesome name='search' size={24} color='black' style={styles.searchIcon} />
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </ScrollView>
       <FlatList

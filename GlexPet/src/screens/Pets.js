@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, Pressable } from 'react-native';
 
 // Importar imágenes locales
 const images = {
@@ -39,9 +39,9 @@ const PetsItem = ({ item }) => (
       <Text style={styles.species}>{item.species}</Text>
     </View>
 
-    <TouchableOpacity style={styles.TrashButton}>
+    <Pressable style={styles.TrashButton}>
       <FontAwesome name='trash' size={27} color='black' />
-    </TouchableOpacity>
+    </Pressable>
   </View>
 );
 
@@ -51,9 +51,9 @@ const App = ({navigation}) => {
     };
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={ChangeAddPets}>
+      <Pressable style={styles.backButton} onPress={ChangeAddPets}>
         <FontAwesome name='arrow-left' size={27} color='black' />
-      </TouchableOpacity>
+      </Pressable>
       <View style={styles.containertitle}>
         <Text style={styles.title}>Mis mascotas</Text>
       </View>
