@@ -1,40 +1,112 @@
-import React from 'react';
-import { StyleSheet, View, TextInput, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FontAwesome } from '@expo/vector-icons';
+import { StyleSheet, View, TextInput, Text, Pressable, ScrollView, Image } from 'react-native';
+import axios from 'axios';
 
-const SignUp = () => {
-    return (
-      <ScrollView contentContainerStyle={stylesSignUp.container}>
-        <View style={stylesSignUp.orangeCircleTopLeft} />
-        <View style={stylesSignUp.orangeCircleTopLeft1} />
-        <View style={stylesSignUp.orangeCircleTopLeft2} />
+const SignUp = ({navigation}) => {
 
-        <View style={stylesSignUp.orangeCircleBottomRight} />
-        <View style={stylesSignUp.orangeCircleBottomRight1} />
-        <View style={stylesSignUp.orangeCircleBottomRight2} />
-      
-        <View style={stylesSignUp.data_container}>
-          <Text style={stylesSignUp.text}>Registro</Text>
-          <TextInput style={stylesSignUp.input} keyboardType='numeric' placeholder='Id'></TextInput>
-          <TextInput style={stylesSignUp.input} placeholder='Nombre'></TextInput>
-          <TextInput style={stylesSignUp.input} placeholder='Apellido'></TextInput>
-          <TextInput style={stylesSignUp.input} placeholder='Fecha de nacimiento'></TextInput>
-          <TextInput style={stylesSignUp.input} placeholder='Dirección'></TextInput>
-          <TextInput style={stylesSignUp.input} keyboardType='numeric' placeholder='Celular'></TextInput>
-          <Text style={stylesSignUp.text}>Usuario</Text>
-          <TextInput style={stylesSignUp.input} placeholder='Correo'></TextInput>
-          <TextInput style={stylesSignUp.input} placeholder='Contraseña'></TextInput>
-          <TextInput style={stylesSignUp.input} placeholder='Confirmar Contraseña'></TextInput>
+const [cedula, setCedula] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [fechaNacimiento, setFechaNacimiento] = useState('');
+  const [direccion, setDireccion] = useState('');
+  const [celular, setCelular] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [contrasena, setContrasena] = useState('');
+  const [confirmarContrasena, setConfirmarContrasena] = useState('');
 
-          <TouchableOpacity style={stylesSignUp.SignUpButton}>
-            <Text style={stylesSignUp.SignUptext}>Registrar</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    );
-    
+  const ChangeLogin = () => {
+    navigation.navigate('Login');
+  };
+
+const handleSignUp = async() =>{
+  if(contrasena === confirmarContrasena){
+    const data ={
+      cedula,
+      nombre,
+      apellido,
+      fechaNacimiento,
+      direccion,
+      celular,
+      correo,
+      contrasena
+      }
+
+      try {
+        const response = await axios.post('http://localhost:3000/SignUp/login/register', data)
+        console.log(response.data)
+      } catch (error) {
+        console.error('error al registrar', error);
+      }
+    }else{
+      alert('Las contraseñas no coinciden');
+    }
+  }
+
+  return (
+    <ScrollView contentContainerStyle={stylesSignUp.container}>
+      <View style={stylesSignUp.orangeCircleTopLeft} />
+      <View style={stylesSignUp.orangeCircleTopLeft1} />
+      <View style={stylesSignUp.orangeCircleTopLeft2} />
+
+      <View style={stylesSignUp.orangeCircleBottomRight} />
+      <View style={stylesSignUp.orangeCircleBottomRight1} />
+      <View style={stylesSignUp.orangeCircleBottomRight2} />
+
+      <Pressable style={stylesSignUp.backButton} onPress={ChangeLogin}>
+        <FontAwesome name='arrow-left' size={27} color='black' />
+      </Pressable>
+      <View style={stylesSignUp.data_container}>
+        <Text style={stylesSignUp.text}>Registro</Text>
+        <TextInput
+          style={stylesSignUp.input}
+          inputMode='numeric'
+          placeholder='cedula'
+          value={cedula}
+          onChangeText={setCedula}
+        />
+        <TextInput style={stylesSignUp.input} placeholder='Nombre' value={nombre} onChangeText={setNombre} />
+        <TextInput style={stylesSignUp.input} placeholder='Apellido' value={apellido} onChangeText={setApellido} />
+        <TextInput
+          style={stylesSignUp.input}
+          placeholder='Fecha de nacimiento'
+          value={fechaNacimiento}
+          onChangeText={setFechaNacimiento}
+        />
+        <TextInput style={stylesSignUp.input} placeholder='Dirección' value={direccion} onChangeText={setDireccion} />
+        <TextInput
+          style={stylesSignUp.input}
+          inputMode='numeric'
+          placeholder='Celular'
+          value={celular}
+          onChangeText={setCelular}
+        />
+        <Text style={stylesSignUp.text}>Usuario</Text>
+        <TextInput style={stylesSignUp.input} placeholder='Correo' value={correo} onChangeText={setCorreo} />
+        <TextInput
+          style={stylesSignUp.input}
+          placeholder='Contraseña'
+          value={contrasena}
+          onChangeText={setContrasena}
+          secureTextEntry
+        />
+        <TextInput
+          style={stylesSignUp.input}
+          placeholder='Confirmar Contraseña'
+          value={confirmarContrasena}
+          onChangeText={setConfirmarContrasena}
+          secureTextEntry
+        />
+
+        <Pressable style={stylesSignUp.SignUpButton} onPress={handleSignUp}>
+          <Text style={stylesSignUp.SignUptext}>Registrar</Text>
+        </Pressable>
+      </View>
+    </ScrollView>
+  );
 };
 
-export default SignUp
+export default SignUp;
 
 const stylesSignUp = StyleSheet.create({
   container: {
@@ -45,6 +117,12 @@ const stylesSignUp = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#FAFFD8',
     padding: 10,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+    zIndex: 1,
   },
   data_container: {
     width: '80%',
