@@ -11,7 +11,6 @@ import SignUp from './src/screens/SignUp';
 import AddPets from './src/screens/AddPets';
 import Cart from './src/screens/Cart';
 import User from './src/screens/User';
-import Program from './src/screens/Program';
 import Products from './src/screens/Products';
 import Pets from './src/screens/Pets';
 import Pay from './src/screens/Pay';
@@ -40,13 +39,6 @@ const MainTabs = () => {
         component={User}
         options={{
           tabBarIcon: ({ color, size }) => <FontAwesome name='user' color={color} size={size} />,
-        }}
-      />
-      <Tab.Screen
-        name='Program'
-        component={Program}
-        options={{
-          tabBarIcon: ({ color, size }) => <FontAwesome name='calendar' color={color} size={size} />,
         }}
       />
       <Tab.Screen
