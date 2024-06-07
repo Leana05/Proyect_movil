@@ -14,7 +14,7 @@ import User from './src/screens/User';
 import Program from './src/screens/Program';
 import Products from './src/screens/Products';
 import Pets from './src/screens/Pets';
-
+import Pay from './src/screens/Pay';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -80,7 +80,8 @@ export default function App() {
         <Stack.Screen name='SignUp' component={SignUp} />
         <Stack.Screen name='Products' component={Products} />
         <Stack.Screen name='Pets' component={Pets} />
-        <Stack.Screen name='AddPets' component={AddPets}/>
+        <Stack.Screen name='AddPets' component={AddPets} />
+        <Stack.Screen name='Pay' component={Pay} />
         <Stack.Screen name='MainTabs' component={MainTabs} />
       </Stack.Navigator>
     </NavigationContainer>

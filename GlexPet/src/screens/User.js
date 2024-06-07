@@ -276,6 +276,9 @@ const User = () => {
             <TouchableOpacity style={stylesUser.loginButton}>
               <Text style={stylesUser.loginButtonText}>Cerrar Sesión</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={stylesUser.loginButton}>
+              <Text style={stylesUser.loginButtonText}>Eliminar Cueta</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -397,6 +400,7 @@ const stylesUser = StyleSheet.create({
     backgroundColor: '#D676C1',
     paddingVertical: 10,
     borderRadius: 10,
+    marginTop:10,
   },
   loginButtonText: {
     color: '#fff',
