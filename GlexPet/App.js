@@ -11,9 +11,9 @@ import SignUp from './src/screens/SignUp';
 import AddPets from './src/screens/AddPets';
 import Cart from './src/screens/Cart';
 import User from './src/screens/User';
-import Program from './src/screens/Program';
 import Products from './src/screens/Products';
-
+import Pets from './src/screens/Pets';
+import Pay from './src/screens/Pay';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -39,13 +39,6 @@ const MainTabs = () => {
         component={User}
         options={{
           tabBarIcon: ({ color, size }) => <FontAwesome name='user' color={color} size={size} />,
-        }}
-      />
-      <Tab.Screen
-        name='Program'
-        component={Program}
-        options={{
-          tabBarIcon: ({ color, size }) => <FontAwesome name='calendar' color={color} size={size} />,
         }}
       />
       <Tab.Screen
@@ -78,6 +71,9 @@ export default function App() {
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='SignUp' component={SignUp} />
         <Stack.Screen name='Products' component={Products} />
+        <Stack.Screen name='Pets' component={Pets} />
+        <Stack.Screen name='AddPets' component={AddPets} />
+        <Stack.Screen name='Pay' component={Pay} />
         <Stack.Screen name='MainTabs' component={MainTabs} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -44,9 +44,18 @@ const ProductItem = ({ item }) => (
   </View>
 );
 
-const App = () => {
+const App = ({ navigation }) => {
+
+  const ChangeHome = () => {
+    navigation.navigate('MainTabs');
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={ChangeHome}>
+        <FontAwesome name='arrow-left' size={27} color='black' />
+      </TouchableOpacity>
+
       <ScrollView contentContainerStyle={styles.containerSearch}>
         <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode='stretch' />
         <View style={styles.searchContainer}>
@@ -71,8 +80,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFFD8',
     padding: 10,
   },
+  backButton: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+    zIndex: 1,
+  },
   containerSearch: {
-    marginTop: 30,
+    marginTop: 70,
     width: '100%',
     height: 100,
     justifyContent: 'center',

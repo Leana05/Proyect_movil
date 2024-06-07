@@ -1,5 +1,19 @@
+
+// export default Cart;
 import React from 'react';
-import { ScrollView, StyleSheet, View, Image, Text, TextInput, FlatList, SafeAreaView } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TextInput,
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 
 const products = [
   { id: '1', name: 'PRODUCTO 1', quantity: '1', price: '$1000' },
@@ -8,7 +22,10 @@ const products = [
   { id: '4', name: 'PRODUCTO 4', quantity: '4', price: '$4000' },
 ];
 
-const Cart = () => {
+const Cart = ({navigation}) => {
+  const ChangePay = () => {
+    navigation.navigate('Pay');
+  };
   return (
     <SafeAreaView style={styleCart.containerAll}>
       <FlatList
@@ -27,6 +44,9 @@ const Cart = () => {
               <Text style={styleCart.text}>PRECIO</Text>
               <TextInput editable={false} style={styleCart.textInput} value={item.price} />
             </View>
+            <TouchableOpacity style={styleCart.TrashButton}>
+              <FontAwesome name='trash' size={27} color='black' />
+            </TouchableOpacity>
           </View>
         )}
       />
@@ -35,6 +55,9 @@ const Cart = () => {
           Valor total a pagar: <TextInput editable={false} value='$10000' style={styleCart.textInput} />
         </Text>
       </View>
+      <TouchableOpacity style={styleCart.purchaseButton} onPress={ChangePay}>
+        <Text style={styleCart.purchaseButtonText}>Comprar</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -43,6 +66,7 @@ const styleCart = StyleSheet.create({
   containerAll: {
     flex: 1,
     backgroundColor: '#faffd8',
+    paddingTop: 30,
   },
   containerScroll: {
     alignItems: 'center',
@@ -84,6 +108,11 @@ const styleCart = StyleSheet.create({
     padding: 5,
     marginBottom: 10,
   },
+  TrashButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+  },
   total: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -95,6 +124,18 @@ const styleCart = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  purchaseButton: {
+    backgroundColor: '#d676c1',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    margin: 20,
+  },
+  purchaseButtonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
