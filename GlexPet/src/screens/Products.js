@@ -1,50 +1,49 @@
-import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
-// Importar imágenes locales
-const images = {
-  // gato: require('../img/Gato.png'),
-  // perro: require('../img/perrito.png'),
-};
+import axios from 'axios';
 
-const products = [
-  {
-    id: '1',
-    name: 'Fruitables - Snack Para Gato Atún Y Calabaza',
-    price: '$16,150',
-    originalPrice: '$19,000',
-    discountPrice: '$17,670',
-    weight: '70 GR',
-    image: images.gato,
-  },
-  {
-    id: '2',
-    name: 'Fruitables Snack Para Gato Salmon Y Arandanos',
-    price: '$16,618',
-    originalPrice: '$19,550',
-    discountPrice: '$18,182',
-    weight: '70 GR',
-    image: images.perro,
-  },
-];
-
+// El componente que muestra cada producto individual
 const ProductItem = ({ item }) => (
   <View style={styles.productContainer}>
     <View style={styles.offerTag}>
       <Text style={styles.offerText}>Oferta</Text>
     </View>
     <Image source={item.image} style={styles.productImage} />
-    <Text style={styles.productName}>{item.name}</Text>
-    <Text style={styles.productPrice}>{item.price}</Text>
+    <Text style={styles.productName}>{item.nombre}</Text>
+    <Text style={styles.productPrice}>${item.precio}</Text>
     <Text style={styles.discountPrice}>
-      {item.discountPrice} <Text style={styles.originalPrice}>{item.originalPrice}</Text>
+      ${item.precio * 0.9}
     </Text>
-    <Text style={styles.weight}>{item.weight}</Text>
+    <Text style={styles.weight}>{item.descripcion}</Text>
   </View>
 );
 
+
 const App = ({ navigation }) => {
+    const [productos, setProductos] = useState([]);
+
+    useEffect(() => {
+
+
+      const fetchData = async () => {
+        try {
+          const response = await axios.get('http://localhost:3000/Shop/productos');
+          const data = response.data;
+          const idProduc = data.map((producto) => producto.idProducto);
+          console.log(idProduc);
+
+          setProductos(data);
+        } catch (error) {
+          console.error('Error obteniendo los productos:', error);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+  console.log(productos);
 
   const ChangeHome = () => {
     navigation.navigate('MainTabs');
@@ -52,22 +51,22 @@ const App = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={ChangeHome}>
+      <Pressable style={styles.backButton} onPress={ChangeHome}>
         <FontAwesome name='arrow-left' size={27} color='black' />
-      </TouchableOpacity>
+      </Pressable>
 
-      <ScrollView contentContainerStyle={styles.containerSearch}>
+      <View style={styles.container_search}>
         <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode='stretch' />
         <View style={styles.searchContainer}>
           <TextInput style={styles.input} placeholder='Buscar...' />
-          <TouchableOpacity onPress={() => console.log('Search pressed')}>
+          <Pressable onPress={() => console.log('Search pressed')}>
             <FontAwesome name='search' size={24} color='black' style={styles.searchIcon} />
-          </TouchableOpacity>
+          </Pressable>
         </View>
-      </ScrollView>
+      </View>
       <FlatList
-        data={products}
-        keyExtractor={(item) => item.id}
+        data={productos}
+        keyExtractor={(item) => item.idProducto}
         renderItem={({ item }) => <ProductItem item={item} />}
       />
     </View>
@@ -79,6 +78,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FAFFD8',
     padding: 10,
+    width: '100%',
+    height: '100%',
   },
   backButton: {
     position: 'absolute',
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     left: 20,
     zIndex: 1,
   },
-  containerSearch: {
+  container_search: {
     marginTop: 70,
     width: '100%',
     height: 100,
@@ -98,6 +99,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
+
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -1,9 +1,10 @@
 import { FontAwesome } from '@expo/vector-icons';
-import React from 'react';
 import { Image, ScrollView, StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
 
+
 const Home = ({navigation}) => {
-  
+
+
   const ChangeProducts = () => {
     navigation.navigate('Products');
   };
