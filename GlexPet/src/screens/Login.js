@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { StyleSheet, Text, TextInput,  View, Image, Pressable } from 'react-native';
+import { StyleSheet, Text, TextInput,  View, Image, Pressable, Alert } from 'react-native';
 import { UserContext } from '../components/UserContext';
 
 
@@ -29,6 +29,15 @@ const handleLogin = async () => {
     }
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
+      Alert.alert(
+  'Título de la Alerta',
+  'Este es el mensaje de la alerta.',
+  [
+    { text: 'OK' }
+  ],
+  { cancelable: false }
+);
+Alert.alert('Título de la Alerta', 'Este es el mensaje de la alerta.', [{ text: 'OK' }], { cancelable: false });
   }
       // console.log(correo);
       // console.log(contrasena);
