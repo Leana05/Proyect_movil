@@ -1,17 +1,37 @@
 
-import React, { useDebugValue, useEffect, useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, Pressable } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { StyleSheet, Text, TextInput,  View, Image, Pressable } from 'react-native';
+
 
 const Login = ({ navigation }) => {
 
+  const [correo, setCorreo] = useState('');
+  const [contrasena, setContrasena] = useState('');
+  const [cedula, setCedula ] = useState('');
 
+const handleLogin = async () => {
+  try {
+    const response = await axios.get(`http://localhost:3000/validation/login/valiUser/${correo}/${contrasena}`, {});
 
+    console.log('Respuesta del servidor:', response.data);
 
+    if (response.data.val) {
+      const cedula = response.data.cedula;
+      console.log('Cédula extraída:', cedula);
 
+      setCedula(cedula); // Guarda la cédula en el contexto
 
-  const handleLogin = () => {
-    navigation.navigate('MainTabs');
-  };
+      navigation.navigate('MainTabs'); // Navega a la pantalla principal
+    } else {
+      console.error('Error de autenticación');
+    }
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+  }
+      console.log(correo);
+      console.log(contrasena);
+};
 
   const ChangeSignUp = () => {
     navigation.navigate('SignUp');
@@ -30,16 +50,14 @@ const Login = ({ navigation }) => {
       <View style={styles_login.login_container}>
         <Text style={styles_login.title}>Inicio de Sesión</Text>
         <View style={styles_login.login}>
-          <TextInput
-            style={styles_login.input}
-            placeholder='Correo'
-            onChangeText={(value) => handleChangeText('email', value)}
-          />
+          <TextInput style={styles_login.input} placeholder='Correo' value={correo} onChangeText={setCorreo} />
+
           <TextInput
             style={styles_login.input}
             placeholder='Contraseña'
             secureTextEntry
-            onChangeText={(value) => handleChangeText('password', value)}
+            value={contrasena}
+            onChangeText={setContrasena}
           />
           <View>
             <Text>¿Ha olvidado su contraseña?</Text>
