@@ -73,9 +73,10 @@ export default function App() {
     <UserProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='Products' component={Products} />
+
           <Stack.Screen name='Login' component={Login} />
           <Stack.Screen name='SignUp' component={SignUp} />
-          <Stack.Screen name='Products' component={Products} />
           <Stack.Screen name='Pets' component={Pets} />
           <Stack.Screen name='AddPets' component={AddPets} />
           <Stack.Screen name='Pay' component={Pay} />
