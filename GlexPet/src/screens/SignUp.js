@@ -33,7 +33,7 @@ const handleSignUp = async() =>{
       }
 
       try {
-        const response = await axios.post('http://localhost:3000/SignUp/login/register', data)
+        const response = await axios.post('http://192.168.20.26:3000/SignUp/login/register', data);
         console.log(response.data)
       } catch (error) {
         console.error('error al registrar', error);
