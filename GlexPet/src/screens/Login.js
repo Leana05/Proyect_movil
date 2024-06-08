@@ -13,13 +13,13 @@ const Login = ({ navigation }) => {
 
 const handleLogin = async () => {
   try {
-    const response = await axios.get(`http://localhost:3000/validation/login/valiUser/${correo}/${contrasena}`, {});
+    const response = await axios.get(`http://192.168.20.26:3000/validation/login/valiUser/${correo}/${contrasena}`, {});
 
-    console.log('Respuesta del servidor:', response.data);
+    // console.log('Respuesta del servidor:', response.data);
 
     if (response.data.val) {
       const cedula = response.data.cedula;
-      console.log('Cédula extraída:', cedula);
+      // console.log('Cédula extraída:', cedula);
       
       setCedula(cedula); // Guarda la cédula en el contexto
 
@@ -30,8 +30,8 @@ const handleLogin = async () => {
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
   }
-      console.log(correo);
-      console.log(contrasena);
+      // console.log(correo);
+      // console.log(contrasena);
 };
 
   const ChangeSignUp = () => {
