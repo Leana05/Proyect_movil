@@ -1,35 +1,56 @@
 // export default Cart;
-import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../components/UserContext';
+
+
 
 import {
-  ScrollView,
-  StyleSheet,
-  View,
+  FlatList,
   Image,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
   Text,
   TextInput,
-  FlatList,
-  SafeAreaView,
-  Pressable,
+  View
 } from 'react-native';
 
-const products = [
-  { id: '1', name: 'PRODUCTO 1', quantity: '1', price: '$1000' },
-  { id: '2', name: 'PRODUCTO 2', quantity: '2', price: '$2000' },
-  { id: '3', name: 'PRODUCTO 3', quantity: '3', price: '$3000' },
-  { id: '4', name: 'PRODUCTO 4', quantity: '4', price: '$4000' },
-];
+const Cart = ({ navigation }) => {
 
-const Cart = ({navigation}) => {
+  const [productos, setProductos] = useState([]);
+  const { cedula } = useContext(UserContext);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/detCar/login/det/${cedula}`);
+        const data = response.data;
+        const idProduc = data.map((producto) => producto.idDetCar);
+        // console.log(idProduc);
+
+        setProductos(data);
+        const totalPrice = data.reduce((total, product) => total + parseFloat(product.precio), 0);
+        setTotalPrice(totalPrice);
+        // console.log(data);
+      } catch (error) {
+        console.error('Error obteniendo los productos:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const ChangePay = () => {
     navigation.navigate('Pay');
   };
   return (
     <SafeAreaView style={styleCart.containerAll}>
       <FlatList
-        data={products}
-        keyExtractor={(item) => item.id}
+        data={productos}
+        keyExtractor={(item) => item.idDetCar}
         contentContainerStyle={styleCart.containerScroll}
         renderItem={({ item }) => (
           <View style={styleCart.cardProduct}>
@@ -37,11 +58,11 @@ const Cart = ({navigation}) => {
               <Image style={styleCart.img} source={require('../img/Logo.png')} resizeMode='contain' />
             </View>
             <View style={styleCart.containerInfo}>
-              <Text style={styleCart.text}>{item.name}</Text>
+              <Text style={styleCart.text}>{item.nombre}</Text>
               <Text style={styleCart.text}>CANTIDAD</Text>
-              <TextInput editable={false} style={styleCart.textInput} value={item.quantity} />
+              <TextInput editable={false} style={styleCart.textInput} value={item.cantidad} />
               <Text style={styleCart.text}>PRECIO</Text>
-              <TextInput editable={false} style={styleCart.textInput} value={item.price} />
+              <TextInput editable={false} style={styleCart.textInput} value={item.precio} />
             </View>
             <Pressable style={styleCart.TrashButton}>
               <FontAwesome name='trash' size={27} color='black' />
@@ -50,9 +71,7 @@ const Cart = ({navigation}) => {
         )}
       />
       <View style={styleCart.containerTotal}>
-        <Text style={styleCart.total}>
-          Valor total a pagar: <TextInput editable={false} value='$10000' style={styleCart.textInput} />
-        </Text>
+        <Text style={styleCart.total}>Valor total a pagar: ${totalPrice}</Text>
       </View>
       <Pressable style={styleCart.purchaseButton} onPress={ChangePay}>
         <Text style={styleCart.purchaseButtonText}>Comprar</Text>
