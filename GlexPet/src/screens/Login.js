@@ -1,14 +1,15 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { StyleSheet, Text, TextInput,  View, Image, Pressable } from 'react-native';
+import { UserContext } from '../components/UserContext';
 
 
 const Login = ({ navigation }) => {
 
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
-  const [cedula, setCedula ] = useState('');
+  const {cedula, setCedula} = useContext(UserContext);
 
 const handleLogin = async () => {
   try {
@@ -19,7 +20,7 @@ const handleLogin = async () => {
     if (response.data.val) {
       const cedula = response.data.cedula;
       console.log('Cédula extraída:', cedula);
-
+      
       setCedula(cedula); // Guarda la cédula en el contexto
 
       navigation.navigate('MainTabs'); // Navega a la pantalla principal

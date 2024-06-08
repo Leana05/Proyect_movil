@@ -1,6 +1,29 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { useContext } from 'react';
+import { UserContext } from '../components/UserContext';
+
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+
+// asi es como se estra la cedula
+  // const { cedula } = useContext(UserContext);
+// 
+// 
+// 
+// 
+// 
+// 
+
+
+
+
 
 // Importar imágenes locales
 const images = {
@@ -28,6 +51,9 @@ const pets = [
 ];
 
 const PetsItem = ({ item }) => (
+
+
+
   <View style={styles.petsContainer}>
     <View style={styles.containerImage}>
       <Image source={item.image} style={styles.petsImage} />
