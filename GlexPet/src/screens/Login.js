@@ -1,5 +1,4 @@
 
-import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { StyleSheet, Text, TextInput,  View, Image, Pressable, Alert } from 'react-native';
 import { UserContext } from '../components/UserContext';
@@ -9,25 +8,25 @@ const Login = ({ navigation }) => {
 
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
-  const {cedula, setCedula} = useContext(UserContext);
+  const { cedula, setCedula } = useContext(UserContext);
 
-const handleLogin = async () => {
-  try {
-    const response = await axios.get(`http://192.168.20.26:3000/validation/login/valiUser/${correo}/${contrasena}`, {});
+  const handleLogin = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/validation/login/valiUser/${correo}/${contrasena}`, {});
 
-    // console.log('Respuesta del servidor:', response.data);
+      // console.log('Respuesta del servidor:', response.data);
 
-    if (response.data.val) {
-      const cedula = response.data.cedula;
-      // console.log('Cédula extraída:', cedula);
-      
-      setCedula(cedula); // Guarda la cédula en el contexto
+      if (response.data.val) {
+        const cedula = response.data.cedula;
+        // console.log('Cédula extraída:', cedula);
 
-      navigation.navigate('MainTabs'); // Navega a la pantalla principal
-    } else {
-      console.error('Error de autenticación');
-    }
-  } catch (error) {
+        setCedula(cedula); // Guarda la cédula en el contexto
+
+        navigation.navigate('MainTabs'); // Navega a la pantalla principal
+      } else {
+        console.error('Error de autenticación');
+      }
+    } catch (error) {
     console.error('Error al iniciar sesión:', error);
       Alert.alert(
   'Título de la Alerta',

@@ -4,72 +4,63 @@ import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { UserContext } from '../components/UserContext';
 
-const User = ({navigation}) => {
-
-
-
+const User = ({ navigation }) => {
   const { cedula } = useContext(UserContext);
   const [userData, setUserData] = useState(null);
   const [nombre, setNombre] = useState('');
- const [apellido, setApellido] = useState('');
- const [fechaNacimiento, setFechaNacimiento] = useState('');
- const [direccion, setDireccion] = useState('');
- const [telefono, setCelular] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [fechaNacimiento, setFechaNacimiento] = useState('');
+  const [direccion, setDireccion] = useState('');
+  const [telefono, setCelular] = useState('');
 
-    useEffect(() => {
-
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(`http://192.168.20.26:3000/SignUp/login/user/${cedula}`);
-          const usua=setUserData(response.data); // Assuming response.data contains user data
-          // console.log(response.data); // Imprimir datos del usuario por consola
-          setNombre(response.data.nombre);
-          setApellido(response.data.apellido);
-          setFechaNacimiento(response.data.fechaNacimiento);
-          setDireccion(response.data.direccion);
-          setCelular(response.data.celular);
-
-        } catch (error) {
-          console.error('Error obteniendo los datos del usuario:', error);
-        }
-      };
-
-      fetchData();
-    }, [cedula]);
-
-
-    const handleSignUp = async () => {
-        const data = {
-          nombre,
-          apellido,
-          fechaNacimiento,
-          direccion,
-          celular,
-        };
-        try {
-          // Mostrar alerta al entrar al bloque try
-   
-          const response = await axios.patch(`http://192.168.20.26:3000/SignUp/login/user/${cedula}`, data);
-          console.log(response.data);
-          
-        } catch (error) {
-          console.error('error al registrar', error);
-        }
-      
-    };
-    const DelateUser = async () =>{
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        alert('se Elimino la cuenta')
-        const response = await axios.delete(`http://192.168.20.26:3000/SignUp/login/user/${cedula}`);
-        ChangeLogin();
+        const response = await axios.get(`http://192.168.20.26:3000/SignUp/login/user/${cedula}`);
+        const usua = setUserData(response.data); // Assuming response.data contains user data
+        // console.log(response.data); // Imprimir datos del usuario por consola
+        setNombre(response.data.nombre);
+        setApellido(response.data.apellido);
+        setFechaNacimiento(response.data.fechaNacimiento);
+        setDireccion(response.data.direccion);
+        setCelular(response.data.celular);
       } catch (error) {
-          console.error('error al eliminar la cuenta', error);
-
+        console.error('Error obteniendo los datos del usuario:', error);
       }
-    }
-    const ChangeLogin = () => {
-      navigation.navigate('Login');
     };
+
+    fetchData();
+  }, [cedula]);
+
+  const handleSignUp = async () => {
+    const data = {
+      nombre,
+      apellido,
+      fechaNacimiento,
+      direccion,
+      celular,
+    };
+    try {
+      // Mostrar alerta al entrar al bloque try
+
+      const response = await axios.patch(`http://192.168.20.26:3000/SignUp/login/user/${cedula}`, data);
+      console.log(response.data);
+    } catch (error) {
+      console.error('error al registrar', error);
+    }
+  };
+  const DelateUser = async () => {
+    try {
+      alert('se Elimino la cuenta');
+      const response = await axios.delete(`http://192.168.20.26:3000/SignUp/login/user/${cedula}`);
+      ChangeLogin();
+    } catch (error) {
+      console.error('error al eliminar la cuenta', error);
+    }
+  };
+  const ChangeLogin = () => {
+    navigation.navigate('Login');
+  };
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={stylesUser.container}>
       <ScrollView contentContainerStyle={stylesUser.scrollContainer}>
@@ -282,6 +273,6 @@ const stylesUser = StyleSheet.create({
   containerActualizar: {
     width: '100%',
     height: 50,
-    paddingLeft:180,
+    paddingLeft: 180,
   },
 });

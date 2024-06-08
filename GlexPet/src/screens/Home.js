@@ -1,5 +1,5 @@
 import { FontAwesome } from '@expo/vector-icons';
-import { Image, ScrollView, StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
+import { Image, ScrollView, StyleSheet, TextInput, Pressable, View, Text } from 'react-native';
 
 
 const Home = ({navigation}) => {
@@ -23,25 +23,25 @@ const Home = ({navigation}) => {
         <Image source={require('../img/huesito1.png')} style={styles.hueso} resizeMode='stretch' />
         <View style={styles.searchContainer}>
           <TextInput style={styles.input} placeholder='Buscar...' />
-          <TouchableOpacity onPress={() => console.log('Search pressed')}>
+          <Pressable onPress={() => console.log('Search pressed')}>
             <FontAwesome name='search' size={24} color='black' style={styles.searchIcon} />
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
       <Text style={styles.title}>Categorias Gatos</Text>
       <View style={styles.containerScroll}>
         {comidaData.map((item) => (
-          <TouchableOpacity key={item.id} style={styles.cardContainer} onPress={ChangeProducts}>
+          <Pressable key={item.id} style={styles.cardContainer} onPress={ChangeProducts}>
             <Card price={item.price} image={item.image} />
-          </TouchableOpacity>
+          </Pressable>
         ))}
       </View>
       <Text style={styles.title}>Categorias Perros</Text>
       <View style={styles.containerScroll}>
         {comidaData.map((item) => (
-          <TouchableOpacity key={item.id} style={styles.cardContainer} onPress={ChangeProducts}>
+          <Pressable key={item.id} style={styles.cardContainer} onPress={ChangeProducts}>
             <Card price={item.price} image={item.image} />
-          </TouchableOpacity>
+          </Pressable>
         ))}
       </View>
     </ScrollView>
@@ -50,9 +50,9 @@ const Home = ({navigation}) => {
 
 const Card = ({ price, image }) => (
   <View style={styles.card}>
-    <TouchableOpacity style={styles.buttonCard}>
+    <Pressable style={styles.buttonCard}>
       <Image source={image} style={styles.cardImage} />
-    </TouchableOpacity>
+    </Pressable>
     <View style={styles.precioCard}>
       <Text style={styles.titlemoney}>{price}</Text>
     </View>
