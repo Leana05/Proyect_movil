@@ -1,72 +1,71 @@
-import React from 'react';
+import React, { useContext, useState, useEffect} from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-// import { useContext } from 'react';
-// import { UserContext } from '../components/UserContext';
-
-// asi es como se define la cedula
-  // const { cedula } = useContext(UserContext);
-
-// Importar imágenes locales
-const images = {
-  gato: require('../img/Gato.png'),
-  // perro: require('../img/perrito.png'),
-};
-
-const pets = [
-  {
-    id: '1',
-    name: 'Atún',
-    age: '17 meses',
-    Race: 'Siberiano',
-    species: 'Gato',
-    image: images.gato,
-  },
-  {
-    id: '2',
-    name: 'Salmon',
-    age: '17 meses',
-    Race: 'Siberiano',
-    species: 'Gato',
-    image: images.perro,
-  },
-];
+import axios from 'axios';
+import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, TouchableOpacity, Pressable } from 'react-native'; 
+import { UserContext } from '../components/UserContext';
 
 const PetsItem = ({ item }) => (
-
-
 
   <View style={styles.petsContainer}>
     <View style={styles.containerImage}>
       <Image source={item.image} style={styles.petsImage} />
     </View>
     <View>
-      <Text style={styles.petsName}>{item.name}</Text>
-      <Text style={styles.petsage}>{item.age}</Text>
-      <Text style={styles.Race}>{item.Race}</Text>
-      <Text style={styles.species}>{item.species}</Text>
+      <Text style={styles.petsName}>{item.nombre}</Text>
+      <Text style={styles.species}>{item.especie}</Text>
+      <Text style={styles.Race}>{item.raza}</Text>
+      <Text style={styles.Race}>{item.sexo}</Text>
+      <Text style={styles.Race}>{item.descripcion}</Text>      
     </View>
 
-    <TouchableOpacity style={styles.TrashButton}>
+    <Pressable style={styles.TrashButton}>
       <FontAwesome name='trash' size={27} color='black' />
-    </TouchableOpacity>
+    </Pressable>
   </View>
 );
 
 const App = ({navigation}) => {
+  const { cedula } = useContext(UserContext);
+  const [mascotas, setMascotas] = useState([]);
+
+  useEffect(() => {
+
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/Pets/mascota/${cedula}`);
+        const data = response.data;
+        const Masco = data.map((mascota) => mascota.idMascota);
+        console.log(Masco);
+
+        setMascotas(data);
+      } catch (error) {
+        console.error('Error obteniendo las mascotas  :', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
     const ChangeAddPets = () => {
       navigation.navigate('MainTabs');
     };
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={ChangeAddPets}>
+      <Pressable style={styles.backButton} onPress={ChangeAddPets}>
         <FontAwesome name='arrow-left' size={27} color='black' />
-      </TouchableOpacity>
+      </Pressable>
       <View style={styles.containertitle}>
         <Text style={styles.title}>Mis mascotas</Text>
       </View>
 
-      <FlatList data={pets} keyExtractor={(item) => item.id} renderItem={({ item }) => <PetsItem item={item} />} />
+      <FlatList
+        data={mascotas}
+        keyExtractor={(item) => item.idMascota}
+        renderItem={({ item }) => <PetsItem item={item} />}
+      />
     </View>
   );
 };
