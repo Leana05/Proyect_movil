@@ -1,11 +1,11 @@
 import { FontAwesome } from '@expo/vector-icons';
-import React, { useEffect, useState } from 'react';
-import { FlatList, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-
 import axios from 'axios';
+import React, { useEffect, useState, useContext } from 'react';
+import { FlatList, Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { UserContext } from '../components/UserContext';
 
 // El componente que muestra cada producto individual
-const ProductItem = ({ item }) => (
+const ProductItem = ({ item, addCar }) => (
   <View style={styles.productContainer}>
     <View style={styles.offerTag}>
       <Text style={styles.offerText}>Oferta</Text>
@@ -15,7 +15,7 @@ const ProductItem = ({ item }) => (
     <Text style={styles.productPrice}>${item.precio}</Text>
     <Text style={styles.discountPrice}>${item.precio * 0.9}</Text>
     <Text style={styles.weight}>{item.descripcion}</Text>
-    <Pressable style={styles.purchaseButton}>
+    <Pressable style={styles.purchaseButton} onPress={() => addCar(item.idProducto)}>
       <Text style={styles.purchaseButtonText}>Comprar</Text>
     </Pressable>
   </View>
@@ -23,26 +23,42 @@ const ProductItem = ({ item }) => (
 
 
 const App = ({ navigation }) => {
-    const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState([]);
 
-    useEffect(() => {
+  const { cedula } = useContext(UserContext);
+
+  const addCar = async (idProducto) => {
+    const data = {
+      cedula,
+      idProducto
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3000/Car/Add/carrito', data)
+      console.log(response.data)
+    } catch (error) {
+      console.error('error al añadir producto al carrito', error);
+    }
+  }
+
+  useEffect(() => {
 
 
-      const fetchData = async () => {
-        try {
-          const response = await axios.get('http://192.168.20.26:3000/Shop/productos');
-          const data = response.data;
-          const idProduc = data.map((producto) => producto.idProducto);
-          // console.log(idProduc);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/Shop/productos');
+        const data = response.data;
+        const idProduc = data.map((producto) => producto.idProducto);
+        // console.log(idProduc);
 
-          setProductos(data);
-        } catch (error) {
-          console.error('Error obteniendo los productos:', error);
-        }
-      };
+        setProductos(data);
+      } catch (error) {
+        console.error('Error obteniendo los productos:', error);
+      }
+    };
 
-      fetchData();
-    }, []);
+    fetchData();
+  }, []);
 
   // console.log(productos);
 
@@ -68,7 +84,7 @@ const App = ({ navigation }) => {
       <FlatList
         data={productos}
         keyExtractor={(item) => item.idProducto}
-        renderItem={({ item }) => <ProductItem item={item} />}
+        renderItem={({ item }) => <ProductItem item={item} addCar={addCar}/>}
       />
     </View>
   );

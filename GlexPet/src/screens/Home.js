@@ -1,5 +1,5 @@
 import { FontAwesome } from '@expo/vector-icons';
-import { Image, ScrollView, StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
+import { Image, ScrollView, StyleSheet, TextInput, Pressable, View, Text } from 'react-native';
 
 
 const Home = ({navigation}) => {
