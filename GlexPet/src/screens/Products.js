@@ -13,10 +13,11 @@ const ProductItem = ({ item }) => (
     <Image source={item.image} style={styles.productImage} />
     <Text style={styles.productName}>{item.nombre}</Text>
     <Text style={styles.productPrice}>${item.precio}</Text>
-    <Text style={styles.discountPrice}>
-      ${item.precio * 0.9}
-    </Text>
+    <Text style={styles.discountPrice}>${item.precio * 0.9}</Text>
     <Text style={styles.weight}>{item.descripcion}</Text>
+    <Pressable style={styles.purchaseButton}>
+      <Text style={styles.purchaseButtonText}>Comprar</Text>
+    </Pressable>
   </View>
 );
 
@@ -29,10 +30,10 @@ const App = ({ navigation }) => {
 
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://localhost:3000/Shop/productos');
+          const response = await axios.get('http://192.168.20.26:3000/Shop/productos');
           const data = response.data;
           const idProduc = data.map((producto) => producto.idProducto);
-          console.log(idProduc);
+          // console.log(idProduc);
 
           setProductos(data);
         } catch (error) {
@@ -43,7 +44,7 @@ const App = ({ navigation }) => {
       fetchData();
     }, []);
 
-  console.log(productos);
+  // console.log(productos);
 
   const ChangeHome = () => {
     navigation.navigate('MainTabs');
@@ -165,6 +166,18 @@ const styles = StyleSheet.create({
   weight: {
     fontSize: 12,
     color: '#A9A9A9',
+  },
+  purchaseButton: {
+    backgroundColor: '#d676c1',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    margin: 20,
+  },
+  purchaseButtonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
