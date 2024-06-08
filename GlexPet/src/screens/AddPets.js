@@ -1,8 +1,39 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import SelectInput from 'react-native-picker-select';
+import { UserContext } from '../components/UserContext';
 
 const AddPets = ({ navigation }) => {
+
+  const { cedula } = useContext(UserContext);
+
+  const [nombre, setNombre] = useState('');
+  const [especie, setEspecie] = useState('');
+  const [raza, setRaza] = useState('');
+  const [sexo, setSexo] = useState('');
+  const [fechaNacimiento, setFechaNacimiento] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+
+  const handlePets = async () => {
+    const data = {
+      nombre,
+      especie,
+      raza,
+      sexo,
+      fechaNacimiento,
+      cedula,
+      descripcion
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3000/Pets/mascota', data)
+      console.log(response.data)
+    } catch (error) {
+      console.error('error al registrar mascota', error);
+    }
+  }
+
   const Especie = [
     { label: 'Canino', value: '0' },
     { label: 'Felino', value: '1' },
@@ -27,13 +58,16 @@ const AddPets = ({ navigation }) => {
 
         <View style={styleAddPets.Profile}>
           <Text style={styleAddPets.title}>Nombre</Text>
-          <TextInput style={styleAddPets.TextInput} placeholder='Ingrese el nombre de la mascota' />
+          <TextInput style={styleAddPets.TextInput} placeholder='Ingrese el nombre de la mascota' value={nombre} onChangeText={setNombre}/>
 
           <Text style={styleAddPets.title}>Descripción</Text>
-          <TextInput style={styleAddPets.TextInput} placeholder='Describa a su mascota (opcional)' />
+          <TextInput style={styleAddPets.TextInput} placeholder='Describa a su mascota (opcional)' value={descripcion} onChangeText={setDescripcion} />
 
           <Text style={styleAddPets.title}>Fecha de Nacimiento</Text>
-          <TextInput style={styleAddPets.TextInput} placeholder='Ingrese la fecha de nacimiento de la mascota' />
+          <TextInput style={styleAddPets.TextInput} placeholder='Ingrese la fecha de nacimiento de la mascota' value={fechaNacimiento} onChangeText={setFechaNacimiento} />
+
+          <Text style={styleAddPets.title}>Raza</Text>
+          <TextInput style={styleAddPets.TextInput} placeholder='Ingrese la raza de la mascota' value={raza} onChangeText={setRaza} />
         </View>
       </View>
 
@@ -44,6 +78,7 @@ const AddPets = ({ navigation }) => {
             placeholder={{ label: 'Selecciona una especie', value: null }}
             items={Especie}
             style={pickerSelectStyles}
+            value={especie} onChangeText={setEspecie}
           />
         </View>
 
@@ -53,13 +88,14 @@ const AddPets = ({ navigation }) => {
             placeholder={{ label: 'Selecciona un género', value: null }}
             items={Genero}
             style={pickerSelectStyles}
+            value={sexo} onChangeText={setSexo}
           />
         </View>
       </View>
 
       <View style={styleAddPets.fitButton}>
         <View style={styleAddPets.btnSeparator}>
-          <Pressable style={styleAddPets.touchable}>
+          <Pressable style={styleAddPets.touchable} onPress={handlePets}>
             <Text style={styleAddPets.txtButton}>Guardar</Text>
           </Pressable>
         </View>

@@ -1,11 +1,7 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-// import { useContext } from 'react';
-// import { UserContext } from '../components/UserContext';
-
-// asi es como se define la cedula
-  // const { cedula } = useContext(UserContext);
+import axios from 'axios';
+import { View, Text, StyleSheet, FlatList, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native'; 
 
 // Importar imágenes locales
 const images = {
@@ -54,9 +50,12 @@ const PetsItem = ({ item }) => (
 );
 
 const App = ({navigation}) => {
+  
+
     const ChangeAddPets = () => {
       navigation.navigate('MainTabs');
     };
+
   return (
     <View style={styles.container}>
       <Pressable style={styles.backButton} onPress={ChangeAddPets}>
