@@ -14,6 +14,7 @@ import Products from './src/screens/Products';
 import Pets from './src/screens/Pets';
 import Pay from './src/screens/Pay';
 
+import { UserProvider } from './src/components/UserContext';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,6 +70,7 @@ export default function App() {
   }
 
   return (
+    <UserProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name='Login' component={Login} />
@@ -80,5 +82,6 @@ export default function App() {
           <Stack.Screen name='MainTabs' component={MainTabs} />
         </Stack.Navigator>
       </NavigationContainer>
+    </UserProvider>
   );
 }
