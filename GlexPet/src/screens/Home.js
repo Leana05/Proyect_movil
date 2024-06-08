@@ -3,7 +3,7 @@ import React from 'react';
 import { Image, ScrollView, StyleSheet, TextInput, Pressable, View, Text } from 'react-native';
 
 const Home = ({navigation}) => {
-
+  
   const ChangeProducts = () => {
     navigation.navigate('Products');
   };

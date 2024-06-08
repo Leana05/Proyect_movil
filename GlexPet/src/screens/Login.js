@@ -1,12 +1,38 @@
 
-import React from 'react';
-import { StyleSheet, Text, TextInput, Pressable, View, Image } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { StyleSheet, Text, TextInput,  View, Image, Pressable } from 'react-native';
+import { UserContext } from '../components/UserContext';
+
 
 const Login = ({ navigation }) => {
-  
-  const handleLogin = () => {
-    navigation.navigate('MainTabs');
-  };
+
+  const [correo, setCorreo] = useState('');
+  const [contrasena, setContrasena] = useState('');
+  const {cedula, setCedula} = useContext(UserContext);
+
+const handleLogin = async () => {
+  try {
+    const response = await axios.get(`http://localhost:3000/validation/login/valiUser/${correo}/${contrasena}`, {});
+
+    console.log('Respuesta del servidor:', response.data);
+
+    if (response.data.val) {
+      const cedula = response.data.cedula;
+      console.log('Cédula extraída:', cedula);
+      
+      setCedula(cedula); // Guarda la cédula en el contexto
+
+      navigation.navigate('MainTabs'); // Navega a la pantalla principal
+    } else {
+      console.error('Error de autenticación');
+    }
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+  }
+      console.log(correo);
+      console.log(contrasena);
+};
 
   const ChangeSignUp = () => {
     navigation.navigate('SignUp');
@@ -17,7 +43,6 @@ const Login = ({ navigation }) => {
       {/* Círculos naranjas */}
       <View style={styles_login.orangeCircleTopLeft} />
       <View style={styles_login.orangeCircleTopLeft1} />
-
       <View style={styles_login.orangeCircleBottomRight} />
       <View style={styles_login.orangeCircleBottomRight1} />
       <View style={styles_login.dog}>
@@ -26,8 +51,15 @@ const Login = ({ navigation }) => {
       <View style={styles_login.login_container}>
         <Text style={styles_login.title}>Inicio de Sesión</Text>
         <View style={styles_login.login}>
-          <TextInput style={styles_login.input} placeholder='Correo' />
-          <TextInput style={styles_login.input} placeholder='Contraseña' secureTextEntry />
+          <TextInput style={styles_login.input} placeholder='Correo' value={correo} onChangeText={setCorreo} />
+
+          <TextInput
+            style={styles_login.input}
+            placeholder='Contraseña'
+            secureTextEntry
+            value={contrasena}
+            onChangeText={setContrasena}
+          />
           <View>
             <Text>¿Ha olvidado su contraseña?</Text>
           </View>
