@@ -43,6 +43,7 @@ const Cart = ({ navigation }) => {
     fetchData();
   }, []);
 
+
   const ChangePay = () => {
     navigation.navigate('Pay');
   };
